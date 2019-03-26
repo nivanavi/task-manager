@@ -1,0 +1,13 @@
+.oneTask {
+    display: flex;
+    background-color: pink;
+    margin-bottom: 50px;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+
+.oneTask:active {
+    background-color: aliceblue;
+    border: 3px solid grey;
+}

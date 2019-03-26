@@ -1,0 +1,17 @@
+.group {
+    border: 3px solid white;
+    margin-bottom: 20px;
+    min-height: 150px;
+    border-radius: 10px;
+    max-width: 73vw;
+}
+
+.groupMargin {
+    padding-bottom: 50px;
+}
+
+.groupName {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
