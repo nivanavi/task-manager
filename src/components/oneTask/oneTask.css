@@ -9,6 +9,5 @@
 
 
 .oneTask:active {
-    background-color: aliceblue;
-    border: 3px solid grey;
+    background-color: gray;
 }
