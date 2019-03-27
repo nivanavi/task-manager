@@ -1,8 +1,11 @@
 .tasks {
     width: 73vw;
-    height: auto;
-    background-color: chocolate;
-    border-radius: 15px;
+    height: 100vh;
+    background-color: #1C1D22;
+    overflow: auto;
+    box-shadow:-9px 0px 20px 19px rgba(0,0,0,0.6);
+    -webkit-box-shadow:-9px 0px 20px 19px rgba(0,0,0,0.6);
+    -moz-box-shadow:-9px 0px 20px 19px rgba(0,0,0,0.6);
 }
 
 
@@ -13,8 +16,21 @@
     height: 100px;
     justify-content: space-between;
     align-items: center;
+}
 
+.header input, button {
+    border-radius: 10px;
+    background-color: #310B55;
+    border: 1px solid black;
+    color: white;
+}
 
+.header button:focus {
+    outline: none;
+}
+
+.header input:focus {
+    outline: none;
 }
 
 .showSome {

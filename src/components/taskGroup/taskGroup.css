@@ -1,9 +1,11 @@
 .group {
-    border: 3px solid white;
     margin-bottom: 20px;
     min-height: 150px;
     border-radius: 10px;
     max-width: 73vw;
+    background-color: #310B55;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
 .groupMargin {
