@@ -20,7 +20,7 @@ class PlanOnDay extends Component {
 function mapStateToProps(state) {
     return {
         times: state.dayPlan,
-        mainData: state.mainData,
+        mainData: state.mainData
     }
 }
 
@@ -28,6 +28,10 @@ function mapDispatchToProps(dispatch) {
     return {
         addTaskToDayPlan: (task) => dispatch({
             type: 'addTaskToDayPlan',
+            payload: task
+        }),
+        onDeleteInPlan: (task) => dispatch({
+            type: 'onDeleteInPlan',
             payload: task
         })
     }

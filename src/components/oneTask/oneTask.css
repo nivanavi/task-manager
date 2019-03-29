@@ -10,6 +10,14 @@
 
 .oneTask:active {
     background-color: gray;
+}
 
+.oneTaskHeader {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+}
 
+.oneTaskHeader span {
+    font-weight: bold;
 }

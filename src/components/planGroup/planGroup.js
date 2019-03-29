@@ -86,6 +86,7 @@ class PlanGroup extends Component {
                                                id={task.id}
                                                title={task.title}
                                                description={task.description}
+                                               deletePlan={this.props.times}
                                            />
                                         )
                                     })

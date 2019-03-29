@@ -1,6 +1,6 @@
 const initionState = {
     times: [
-        {start: 8, id: '8', tasks: [{title: 'сделать', description: 'сделать работу', id: '1ggg'}]},
+        {start: 8, id: '8', tasks: []},
         {start: 10, id: '10', tasks: []},
         {start: 12, id: '12', tasks: []},
         {start: 14, id: '14', tasks: []},
@@ -14,6 +14,10 @@ const initionState = {
 export default function dayPlan(state = initionState, action) {
     switch (action.type) {
         case 'addTaskToDayPlan':
+            return {
+                times: action.payload
+            };
+        case 'onDeleteInPlan':
             return {
                 times: action.payload
             };

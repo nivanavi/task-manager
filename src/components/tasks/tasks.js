@@ -27,7 +27,7 @@ function mapStateToProps(state) {
     return {
         dayPlan: state.dayPlan.times,
         groups: state.allTasks,
-        mainData: state.mainData,
+        mainData: state.mainData
     }
 }
 
@@ -39,6 +39,10 @@ function mapDispatchToProps(dispatch) {
         }),
         dropTaskToGroup: (task) => dispatch({
             type: 'dropTaskToGroup',
+            payload: task
+        }),
+        onDeleteInGroup: (task) => dispatch({
+            type: 'onDeleteInGroup',
             payload: task
         })
     }
