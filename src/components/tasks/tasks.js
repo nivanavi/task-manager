@@ -16,7 +16,7 @@ class Tasks extends Component {
                     <button className='showSome'>Показать "потом"</button>
                     <input className='showSome' placeholder='не работает' />
                 </div>
-                <TaskGroup all={this.props} groups={this.props.groups} mainData={this.props.mainData}/>
+                <TaskGroup dayPlan={this.props.dayPlan} all={this.props} groups={this.props.groups} mainData={this.props.mainData}/>
                 <AddTask whatAdd={'группу'}/>
             </div>
         )
@@ -25,6 +25,7 @@ class Tasks extends Component {
 
 function mapStateToProps(state) {
     return {
+        dayPlan: state.dayPlan.times,
         groups: state.allTasks,
         mainData: state.mainData,
     }
@@ -32,8 +33,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        addTaskToGroup: (task, id) => dispatch({
+        addTaskToGroup: (task) => dispatch({
             type: 'addTaskToGroup',
+            payload: task
+        }),
+        dropTaskToGroup: (task) => dispatch({
+            type: 'dropTaskToGroup',
             payload: task
         })
     }

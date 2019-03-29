@@ -20,12 +20,17 @@ class PlanOnDay extends Component {
 function mapStateToProps(state) {
     return {
         times: state.dayPlan,
-        mainData: state.mainData
+        mainData: state.mainData,
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        addTaskToDayPlan: (task) => dispatch({
+            type: 'addTaskToDayPlan',
+            payload: task
+        })
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlanOnDay);

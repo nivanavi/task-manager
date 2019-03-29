@@ -11,7 +11,7 @@ class AddTask extends Component {
         for (let i = 0; i < allGroups.length; i++) {
             if (allGroups[i].id === id) {
                 if (title.value !== "" && content.value !== "") {
-                    allGroups[i].tasks.push( {title: title.value, description: content.value, id: idTask},)
+                    allGroups[i].tasks.push( {title: title.value, description: content.value, id: idTask})
                 }
             }
         }

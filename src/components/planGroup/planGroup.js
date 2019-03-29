@@ -4,85 +4,83 @@ import OneTask from '../oneTask/oneTask'
 
 class PlanGroup extends Component {
 
-    // dragOver = (event) => {
-    //     event.preventDefault();
-    // }
-    //
-    // onDrop = (event) => {
-    //     event.preventDefault();
-    //     var data = this.props.mainData.draggableElementId;
-    //     var that = document.getElementById(event.target.id);
-    //     var arr = this.props.mainData.arrayCheck;
-    //
-    //
-    //     if(event.target.id === 'planOnDay') {
-    //         if(arr.indexOf(data[0]) !== -1) {
-    //             arr.splice(arr.indexOf(data[0]), 1);
-    //         }
-    //         that.appendChild(document.getElementById(data[0]));
-    //     }
-    //
-    //     if(allGroups.indexOf(event.target.id) !== -1) {
-    //         if(arr.indexOf(data) === -1) {
-    //             arr.push(data)
-    //         }
-    //         that.appendChild(document.getElementById(data))
-    //         data.splice(0, 1)
-    //     }
-    //
-    //     if(allGroups.indexOf(event.target.id) !== -1) {
-    //         if(arr.indexOf(data) !== -1) {
-    //             arr.splice(arr.indexOf(data), 1);
-    //         }
-    //         that.appendChild(document.getElementById(data))
-    //         data.splice(0, 1)
-    //     }
-    //
-    // }
-
     dragOver = (event) => {
         event.preventDefault();
-    }
+    };
 
     onDrop = (event) => {
         event.preventDefault();
-        var data = this.props.mainData.draggableElementId;
-        var that = document.getElementById(event.target.id);
-        var arr = this.props.mainData.arrayCheck;
+        let data = this.props.mainData.draggableElementId;
+        let arrTimes = this.props.times.times.times;
+        let allGroups = [];
 
-        var allGroups = [];
-
-        this.props.times.times.times.map((group) => {
-            allGroups.push(group.id)
+        arrTimes.map((group) => {
+            allGroups.push(group.id);
             return null
-        })
+        });
 
-        if(allGroups.indexOf(event.target.id) !== -1) {
-            if(arr.indexOf(data[0]) === -1) {
-                arr.push(data[0])
-            }
-            that.appendChild(document.getElementById(data[0]))
-        }
 
-        if(allGroups.indexOf(event.target.id) !== -1) {
-            if(arr.indexOf(data[0]) !== -1) {
-                arr.splice(arr.indexOf(data[0]), 1);
+
+
+        if (data[4] !== undefined) {
+        arrTimes.map((groups) => {
+            if (groups.id === data[4]) {
+                groups.tasks.map((task) => {
+                    if (task.id === data[0]) {
+                        groups.tasks.splice(groups.tasks.indexOf(task), 1)
+                    }
+                    return null;
+                })
             }
-            that.appendChild(document.getElementById(data[0]))
-        }
+            return null;
+        });
     }
 
+
+        if (data[3] !== undefined) {
+            arrTimes.map((groups) => {
+                    groups.tasks.map((task) => {
+                        if (task.id === data[0]) {
+                            groups.tasks.map((task) => {
+                                if (task.id === data[0]) {
+                                    groups.tasks.splice(groups.tasks.indexOf(task), 1)
+                                }
+                                return null;
+                            })
+                        }
+                        return null;
+                    });
+                return null;
+            });
+        }
+
+        if(allGroups.indexOf(event.target.id) !== -1) {
+                arrTimes.map((group) => {
+                    if (event.target.id === group.id) {
+                        group.tasks.push({title: data[1], description: data[2], id: data[0]})
+                    }
+                    return null;
+                })
+        }
+
+        return arrTimes;
+    };
+
+    stop = (event) => {
+        event.stopPropagation();
+    };
 
     render() {
         return (
             <div>
                 {   this.props.times.times.times.map((times) => {
                     return (
-                        <div id={times.id} className='planGroup' key={times.id} onDragOver={this.dragOver} onDrop={this.onDrop}>
-                            <h1>{times.start}</h1>
+                        <div id={times.id} className='planGroup' key={times.id} onDragOver={this.dragOver} onDrop={(event) => {this.props.times.addTaskToDayPlan(this.onDrop(event))}}>
+                            <h1 onDrop={this.stop}>{times.start}</h1>
                             {times.tasks.map((task) => {
                                         return (
                                            <OneTask
+                                               igPlanGroup={times.id}
                                                dragId={this.props.mainData}
                                                key={task.id}
                                                id={task.id}
