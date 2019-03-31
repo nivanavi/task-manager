@@ -19,6 +19,7 @@ class PlanOnDay extends Component {
 
 function mapStateToProps(state) {
     return {
+        arrAllTasks: state.allTasks.groups,
         times: state.dayPlan,
         mainData: state.mainData
     }

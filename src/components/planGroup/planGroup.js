@@ -14,6 +14,8 @@ class PlanGroup extends Component {
         let arrTimes = this.props.times.times.times;
         let allGroups = [];
 
+        document.getElementById(data[0]).style.borderTop = '2px solid yellow';
+
         arrTimes.map((group) => {
             allGroups.push(group.id);
             return null

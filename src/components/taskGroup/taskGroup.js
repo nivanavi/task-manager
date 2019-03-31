@@ -73,6 +73,7 @@ class TaskGroup extends Component {
                         title={tasks.title}
                         description={tasks.description}
                         deleteGroup={this.props.all}
+                        important={tasks.important}
                     />
                             )
                         })}

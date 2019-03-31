@@ -46,11 +46,40 @@ class OneTask extends Component {
             })
         }
     };
-
-
     render() {
+        let classForTask = ['oneTask'];
+        if (this.props.important === true) {
+            classForTask.push('important')
+        }
+        
+        if (this.props.deletePlan !== undefined) {
+
+            let allGroups = this.props.deletePlan.arrAllTasks;
+
+            let planGroup = this.props.deletePlan.times.times;
+
+            const arrPlanId = [];
+            planGroup.map((group) => {
+                group.tasks.map((task) => {
+                    arrPlanId.push(task.id)
+                    return null;
+                });
+                return null;
+            });
+
+            allGroups.map((group) => {
+                group.tasks.map((task) => {
+                    if (arrPlanId.indexOf(task.id) !== -1) {
+                        classForTask.push('inPlan')
+                    }
+                    return null;
+                });
+                return null;
+            })
+        }
+
         return (
-            <div id={this.props.id} className='oneTask' draggable='true' onDragStart={(event) => {this.dragStart(event)}} onDrop={this.stop}>
+            <div id={this.props.id} className={classForTask.join(" ")} draggable='true' onDragStart={(event) => {this.dragStart(event)}} onDrop={this.stop}>
                <div className='oneTaskHeader'>
                 <h2>{this.props.title}</h2>
                 <span onClick={this.delete}>x</span>

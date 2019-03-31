@@ -6,18 +6,26 @@ class AddTask extends Component {
     taskAdder = (id) => {
         const title = document.getElementById(id + 'title');
         const content = document.getElementById(id + 'content');
+        const check = document.getElementById(id + 'check');
         const idTask = (Math.round(Math.random() * 10000)).toString();
+        let important;
+        if (check.checked === true) {
+            important = true;
+        } else {
+            important = false;
+        }
         let allGroups = this.props.all.groups.groups;
         for (let i = 0; i < allGroups.length; i++) {
             if (allGroups[i].id === id) {
                 if (title.value !== "" && content.value !== "") {
-                    allGroups[i].tasks.push( {title: title.value, description: content.value, id: idTask})
+                    allGroups[i].tasks.push( {title: title.value, description: content.value, id: idTask, important: important})
                 }
             }
         }
 
         title.value = '';
         content.value = '';
+        check.cheked = false;
 
 
         return allGroups;
@@ -41,6 +49,7 @@ class AddTask extends Component {
                 <textarea id={this.props.groupId + 'content'} />
                 </div>
                 <button className='add' onClick={() => {this.props.all.all.addTaskToGroup(this.taskAdder(this.props.groupId))}}>+</button>
+                    <p>важно? <input id={this.props.groupId + 'check'} type="checkbox" /></p>
                 </div>
 
             </div>

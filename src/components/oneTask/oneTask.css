@@ -21,3 +21,12 @@
 .oneTaskHeader span {
     font-weight: bold;
 }
+
+
+.important {
+    border-bottom: 2px solid red;
+}
+
+.inPlan {
+    border-top: 2px solid yellow;
+}
