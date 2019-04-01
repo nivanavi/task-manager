@@ -13,7 +13,16 @@
 }
 
 .groupName {
-    text-align: center;
     font-weight: bold;
     margin-bottom: 30px;
+    margin-left: 15px;
+}
+
+.deleteGroup {
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 100px;
+    height: 30px;
+    float: right;
+    border-radius: 5px;
 }

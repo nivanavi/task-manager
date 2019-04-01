@@ -39,8 +39,6 @@ class TaskGroup extends Component {
             })
         }
 
-
-
         if(allGroups.indexOf(event.target.id) !== -1) {
                 all.map((group) => {
                     if (event.target.id === group.id) {
@@ -52,18 +50,31 @@ class TaskGroup extends Component {
         return all;
     };
 
+    deleteGroup = (id) => {
+        const allGroups = this.props.groups.groups;
+        allGroups.map((group) => {
+            if (group.id === id) {
+                allGroups.splice(allGroups.indexOf(group), 1);
+            }
+            return null;
+            }
+        )
+        return allGroups;
+    };
+
     stop = (event) => {
         event.stopPropagation();
     };
 
     render() {
+        console.log(this.props.groups.groups)
         return (
             <div>
             {   this.props.groups.groups.map((groups) => {
                     return (
                         <div className='group' key={groups.id}>
                             <div className='groupMargin' id={groups.id} onDragOver={this.dragOver} onDrop={(event) => {this.props.all.dropTaskToGroup(this.onDrop(event))}}>
-                                <h1 className='groupName' onDrop={this.stop}>{groups.groupName}</h1>
+                                <div><h1 className='groupName' onDrop={this.stop}>{groups.groupName} <button className='deleteGroup' onClick={() => {this.props.all.onDeleteGroup(this.deleteGroup(groups.id))}}>завершить</button></h1></div>
                                 { groups.tasks.map((tasks) => {
                                     return (
                                         <OneTask

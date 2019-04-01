@@ -48,6 +48,10 @@ function mapDispatchToProps(dispatch) {
         onDeleteInGroup: (task) => dispatch({
             type: 'onDeleteInGroup',
             payload: task
+        }),
+        onDeleteGroup: (group) => dispatch({
+            type: 'onDeleteGroup',
+            payload: group
         })
     }
 }

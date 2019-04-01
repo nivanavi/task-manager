@@ -32,6 +32,10 @@ export default function allTasks(state = initionState, action) {
             return {
                 groups: action.payload
             };
+        case 'onDeleteGroup':
+            return {
+                groups: action.payload
+            };
         case 'onDeleteInGroup':
             return {
                 groups: action.payload
