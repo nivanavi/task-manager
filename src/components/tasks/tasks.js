@@ -37,6 +37,10 @@ function mapDispatchToProps(dispatch) {
             type: 'addTaskToGroup',
             payload: task
         }),
+        addGroup: (group) => dispatch({
+            type: 'addGroup',
+            payload: group
+        }),
         dropTaskToGroup: (task) => dispatch({
             type: 'dropTaskToGroup',
             payload: task

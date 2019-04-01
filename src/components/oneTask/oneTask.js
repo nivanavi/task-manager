@@ -23,25 +23,24 @@ class OneTask extends Component {
             allGroups.map((group) => {
                 group.tasks.map((task) => {
                     if (task.id === this.props.id) {
-                        group.tasks.splice(group.tasks.indexOf(task), 1)
+                        group.tasks.splice(group.tasks.indexOf(task), 1);
                         return this.props.deleteGroup.onDeleteInGroup(allGroups)
                     }
                     return null;
-                })
+                });
                 return null;
             })
         }
-
         if (this.props.deletePlan !== undefined) {
             planGroup = this.props.deletePlan.times.times;
             planGroup.map((group) => {
                 group.tasks.map((task) => {
                     if (task.id === this.props.id) {
-                        group.tasks.splice(group.tasks.indexOf(task), 1)
+                        group.tasks.splice(group.tasks.indexOf(task), 1);
                         return this.props.deletePlan.onDeleteInPlan(planGroup)
                     }
                     return null;
-                })
+                });
                 return null;
             })
         }
@@ -51,7 +50,7 @@ class OneTask extends Component {
         if (this.props.important === true) {
             classForTask.push('important')
         }
-        
+
         if (this.props.deletePlan !== undefined) {
 
             let allGroups = this.props.deletePlan.arrAllTasks;
@@ -61,7 +60,7 @@ class OneTask extends Component {
             const arrPlanId = [];
             planGroup.map((group) => {
                 group.tasks.map((task) => {
-                    arrPlanId.push(task.id)
+                    arrPlanId.push(task.id);
                     return null;
                 });
                 return null;

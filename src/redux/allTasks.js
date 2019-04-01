@@ -24,6 +24,10 @@ export default function allTasks(state = initionState, action) {
             return {
                 groups: action.payload
             };
+        case 'addGroup':
+            return {
+                groups: action.payload
+            };
         case 'dropTaskToGroup':
             return {
                 groups: action.payload
