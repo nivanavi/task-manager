@@ -68,7 +68,7 @@ class PlanGroup extends Component {
         return arrTimes;
     };
 
-    stop = (event) => {
+    stopDrop = (event) => {
         event.stopPropagation();
     };
 
@@ -78,7 +78,7 @@ class PlanGroup extends Component {
                 {   this.props.times.times.times.map((times) => {
                     return (
                         <div id={times.id} className='planGroup' key={times.id} onDragOver={this.dragOver} onDrop={(event) => {this.props.times.addTaskToDayPlan(this.onDrop(event))}}>
-                            <h1 onDrop={this.stop}>{times.start}</h1>
+                            <h1 onDrop={this.stopDrop}>{times.start}</h1>
                             {times.tasks.map((task) => {
                                         return (
                                            <OneTask

@@ -10,7 +10,7 @@ class OneTask extends Component {
         console.log(dragId)
     };
 
-    stop = (event) => {
+    stopDrop = (event) => {
         event.stopPropagation();
     };
 
@@ -78,7 +78,7 @@ class OneTask extends Component {
         }
 
         return (
-            <div id={this.props.id} className={classForTask.join(" ")} draggable='true' onDragStart={(event) => {this.dragStart(event)}} onDrop={this.stop}>
+            <div id={this.props.id} className={classForTask.join(" ")} draggable='true' onDragStart={(event) => {this.dragStart(event)}} onDrop={this.stopDrop}>
                <div className='oneTaskHeader'>
                 <h2>{this.props.title}</h2>
                 <span onClick={this.delete}>x</span>

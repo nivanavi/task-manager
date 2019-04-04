@@ -62,19 +62,18 @@ class TaskGroup extends Component {
         return allGroups;
     };
 
-    stop = (event) => {
+    stopDrop = (event) => {
         event.stopPropagation();
     };
 
     render() {
-        console.log(this.props.groups.groups)
         return (
             <div>
             {   this.props.groups.groups.map((groups) => {
                     return (
                         <div className='group' key={groups.id}>
                             <div className='groupMargin' id={groups.id} onDragOver={this.dragOver} onDrop={(event) => {this.props.all.dropTaskToGroup(this.onDrop(event))}}>
-                                <div><h1 className='groupName' onDrop={this.stop}>{groups.groupName} <button className='deleteGroup' onClick={() => {this.props.all.onDeleteGroup(this.deleteGroup(groups.id))}}>завершить</button></h1></div>
+                                <div><h1 className='groupName' onDrop={this.stopDrop}>{groups.groupName} <button className='deleteGroup' onClick={() => {this.props.all.onDeleteGroup(this.deleteGroup(groups.id))}}>завершить</button></h1></div>
                                 { groups.tasks.map((tasks) => {
                                     return (
                                         <OneTask

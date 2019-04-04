@@ -4,13 +4,13 @@ import './addTask.css';
 class AddTask extends Component {
 
     taskAdder = (id) => {
-        const title = document.getElementById(id + 'title');
-        const content = document.getElementById(id + 'content');
-        const check = document.getElementById(id + 'check');
+        let title = this.refs.title;
+        let content = this.refs.content;
+        let check = this.refs.check.checked;
         const idTask = (Math.round(Math.random() * 10000)).toString();
         let important;
 
-        if (check.checked === true) {
+        if (check === true) {
             important = true;
         } else {
             important = false;
@@ -18,7 +18,7 @@ class AddTask extends Component {
         let allGroups = this.props.all.groups.groups;
         for (let i = 0; i < allGroups.length; i++) {
             if (allGroups[i].id === id) {
-                if (title.value !== "" && content.value !== "") {
+                if (title !== "" && content !== "") {
                     allGroups[i].tasks.push( {title: title.value, description: content.value, id: idTask, important: important})
                 }
             }
@@ -26,7 +26,6 @@ class AddTask extends Component {
 
         title.value = '';
         content.value = '';
-        check.cheked = false;
 
 
         return allGroups;
@@ -45,17 +44,17 @@ class AddTask extends Component {
                         <div className='adder'>
                             <div className='title'>
                                 <h3>введите название</h3>
-                                <textarea id={this.props.groupId + 'title'}/>
+                                <textarea ref='title'/>
                             </div>
                             <div className='content'>
                                 <h3>введите описание</h3>
-                                <textarea id={this.props.groupId + 'content'}/>
+                                <textarea ref='content'/>
                             </div>
                             <button className='add' onClick={() => {
                                 this.props.all.all.addTaskToGroup(this.taskAdder(this.props.groupId))
                             }}>+
                             </button>
-                            <p className='check'>важно? <input id={this.props.groupId + 'check'} type="checkbox"/></p>
+                            <p className='check'>важно? <input ref='check' type="checkbox"/></p>
                         </div>
 
                     </div>
