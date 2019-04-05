@@ -4,22 +4,16 @@ import '../addTask/addTask.css';
 class AddGroup extends Component {
 
     groupAdder = () => {
-        const title = document.getElementById('titleGroup');
-        const idGroup = (Math.round(Math.random() * 10000)).toString();
-
-        let allGroups = this.props.all.groups.groups;
+        const title = this.refs.titleGroup;
 
                 if (title.value !== "") {
-                    allGroups.push({groupName: title.value,
-                        id: idGroup,
-                        tasks: []
+                    this.props.all.all.addGroup({
+                        title: title.value
                     })
                 }
 
 
         title.value = '';
-
-        return allGroups;
     };
 
 
@@ -32,9 +26,9 @@ class AddGroup extends Component {
                     <div className='adder'>
                         <div className='title'>
                             <h3>введите название</h3>
-                            <textarea id='titleGroup' />
+                            <textarea ref='titleGroup' />
                         </div>
-                        <button className='add' onClick={() => {this.props.all.all.addGroup(this.groupAdder())}}>+</button>
+                        <button className='add' onClick={this.groupAdder}>+</button>
                     </div>
 
                 </div>

@@ -1,9 +1,8 @@
 const initionState = {
-    arrayCheck: [],
     draggableElementId: []
 }
 
 
-export default function mainData(state = initionState, action) {
+export default function mainData(state = initionState) {
     return state;
 }

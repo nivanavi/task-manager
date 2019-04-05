@@ -6,7 +6,11 @@ class OneTask extends Component {
     dragStart = (event) => {
         const dragId = this.props.dragId.draggableElementId;
         dragId.splice(0, 5);
-        dragId.push(event.target.id, this.props.title, this.props.description, this.props.groupId, this.props.igPlanGroup);
+        dragId.push(event.target.id,
+            this.props.title,
+            this.props.description,
+            this.props.groupId,
+            this.props.idPlanGroup);
         console.log(dragId)
     };
 
@@ -15,66 +19,43 @@ class OneTask extends Component {
     };
 
     delete = () => {
-        let allGroups;
-        let planGroup;
-
         if (this.props.deleteGroup !== undefined) {
-            allGroups = this.props.deleteGroup.groups.groups;
-            allGroups.map((group) => {
-                group.tasks.map((task) => {
-                    if (task.id === this.props.id) {
-                        group.tasks.splice(group.tasks.indexOf(task), 1);
-                        return this.props.deleteGroup.onDeleteInGroup(allGroups)
-                    }
-                    return null;
-                });
-                return null;
+            this.props.deleteGroup.onDeleteInGroup({
+                taskDeleteId: this.props.id
             })
+            // allGroups = this.props.deleteGroup.groups.groups;
+            // allGroups.map((group) => {
+            //     group.tasks.map((task) => {
+            //         if (task.id === this.props.id) {
+            //             group.tasks.splice(group.tasks.indexOf(task), 1);
+            //             return this.props.deleteGroup.onDeleteInGroup(allGroups)
+            //         }
+            //         return null;
+            //     });
+            //     return null;
+            // })
         }
         if (this.props.deletePlan !== undefined) {
-            planGroup = this.props.deletePlan.times.times;
-            planGroup.map((group) => {
-                group.tasks.map((task) => {
-                    if (task.id === this.props.id) {
-                        group.tasks.splice(group.tasks.indexOf(task), 1);
-                        return this.props.deletePlan.onDeleteInPlan(planGroup)
-                    }
-                    return null;
-                });
-                return null;
+            this.props.deletePlan.onDeleteInPlan({
+                taskDeleteId: this.props.id
             })
+            // planGroup = this.props.deletePlan.times.times;
+            // planGroup.map((group) => {
+            //     group.tasks.map((task) => {
+            //         if (task.id === this.props.id) {
+            //             group.tasks.splice(group.tasks.indexOf(task), 1);
+            //             return this.props.deletePlan.onDeleteInPlan(planGroup)
+            //         }
+            //         return null;
+            //     });
+            //     return null;
+            // })
         }
     };
     render() {
         let classForTask = ['oneTask'];
         if (this.props.important === true) {
             classForTask.push('important')
-        }
-
-        if (this.props.deletePlan !== undefined) {
-
-            let allGroups = this.props.deletePlan.arrAllTasks;
-
-            let planGroup = this.props.deletePlan.times.times;
-
-            const arrPlanId = [];
-            planGroup.map((group) => {
-                group.tasks.map((task) => {
-                    arrPlanId.push(task.id);
-                    return null;
-                });
-                return null;
-            });
-
-            allGroups.map((group) => {
-                group.tasks.map((task) => {
-                    if (arrPlanId.indexOf(task.id) !== -1) {
-                        classForTask.push('inPlan')
-                    }
-                    return null;
-                });
-                return null;
-            })
         }
 
         return (

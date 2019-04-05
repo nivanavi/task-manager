@@ -3,32 +3,27 @@ import './addTask.css';
 
 class AddTask extends Component {
 
-    taskAdder = (id) => {
+    taskAdder = () => {
         let title = this.refs.title;
         let content = this.refs.content;
         let check = this.refs.check.checked;
-        const idTask = (Math.round(Math.random() * 10000)).toString();
-        let important;
+        let important = false;
 
         if (check === true) {
             important = true;
-        } else {
-            important = false;
         }
-        let allGroups = this.props.all.groups.groups;
-        for (let i = 0; i < allGroups.length; i++) {
-            if (allGroups[i].id === id) {
-                if (title !== "" && content !== "") {
-                    allGroups[i].tasks.push( {title: title.value, description: content.value, id: idTask, important: important})
-                }
-            }
+
+        if (title.value !== "" && content.value !== "") {
+            this.props.all.all.addTaskToGroup({
+                groupId: this.props.groupId,
+                important: important,
+                title: title.value,
+                content: content.value
+            });
         }
 
         title.value = '';
         content.value = '';
-
-
-        return allGroups;
     };
 
 
@@ -51,7 +46,7 @@ class AddTask extends Component {
                                 <textarea ref='content'/>
                             </div>
                             <button className='add' onClick={() => {
-                                this.props.all.all.addTaskToGroup(this.taskAdder(this.props.groupId))
+                                this.taskAdder()
                             }}>+
                             </button>
                             <p className='check'>важно? <input ref='check' type="checkbox"/></p>
