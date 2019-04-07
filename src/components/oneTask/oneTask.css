@@ -1,32 +1,94 @@
 .oneTask {
     display: flex;
     background-color: #3C3F41;
-    margin-bottom: 50px;
+    margin-bottom: 5px;
     flex-direction: column;
-    border-radius: 10px;
-    border: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
-
 
 .oneTask:active {
     background-color: gray;
 }
 
 .oneTaskHeader {
+    padding: 10px 0 10px 15px;
+    font-size: 20px;
+    text-transform: uppercase;
     display: flex;
     justify-content: space-between;
-    padding-right: 10px;
 }
 
-.oneTaskHeader span {
-    font-weight: bold;
+.deleteTask {
+    font-size: 15px;
+    padding: 5px 10px 5px 10px;
 }
 
+.deleteTask:hover {
+    background-color: red;
+    transition: 0.5s;
+}
 
 .important {
     border-bottom: 2px solid red;
 }
 
-.inPlan {
-    border-top: 2px solid yellow;
+.done {
+    display: none;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+.done:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+.doneTrue {
+    color: green;
+}
+
+.later {
+    display: none;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+.later:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+.laterTrue {
+    color: yellow;
+}
+
+.visible {
+    display: inline-block;
+}
+
+.edit {
+    cursor: pointer;
+}
+
+.editTitle {
+    display: none;
+}
+
+.editTitle input {
+    border: none;
+    background-color: inherit;
+    color: white;
+    font-size: 20px;
+}
+
+.editTitle input:focus {
+    outline: none;
+    border-bottom: 2px solid white;
+}
+
+.editTitle .btn {
+    color: greenyellow;
+    margin-left: 5px;
+    margin-top: 4px;
 }

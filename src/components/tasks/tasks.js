@@ -8,13 +8,32 @@ import {connect} from "react-redux";
 class Tasks extends Component {
 
     render() {
+        let classForDoneBtn = ["fa fa-check-square showDone"];
+        let classForLaterBtn = ["fa fa-hourglass-start showLater"];
+
+        if (this.props.filterDone === true) {
+            classForDoneBtn.push('showDoneTrue')
+        }
+
+        if (this.props.filterLater === true) {
+            classForLaterBtn.push('showLaterTrue')
+        }
+
         return (
             <div className="tasks">
                 <div className='header'>
-                    <h1>Задачи</h1>
-                    <button className='showSome'>Показать сделанные</button>
-                    <button className='showSome'>Показать "потом"</button>
-                    <input className='showSome' placeholder='не работает' />
+                    <h1 className='headerName'>Задачи</h1>
+                        <i className={classForDoneBtn.join(" ")} aria-hidden="true"
+                        onClick={this.props.showDone}>
+                        </i>
+                        <i className={classForLaterBtn.join(" ")} aria-hidden="true"
+                           onClick={this.props.showLater}>
+                        </i>
+                    <div>
+                        <i className="fa fa-search search" aria-hidden="true">
+                        </i>
+                        <input className='searchSome'/>
+                    </div>
                 </div>
                 <TaskGroup dayPlan={this.props.dayPlan} all={this.props} groups={this.props.groups} mainData={this.props.mainData}/>
                 <AddTask whatAdd={'группу'}/>
@@ -27,7 +46,9 @@ function mapStateToProps(state) {
     return {
         dayPlan: state.dayPlan.times,
         groups: state.allTasks,
-        mainData: state.mainData
+        mainData: state.mainData,
+        filterDone: state.allTasks.filterDone,
+        filterLater: state.allTasks.filterLater
     }
 }
 
@@ -52,6 +73,26 @@ function mapDispatchToProps(dispatch) {
         onDeleteGroup: (group) => dispatch({
             type: 'onDeleteGroup',
             payload: group
+        }),
+        onDone: (task) => dispatch({
+            type: 'onDone',
+            payload: task
+        }),
+        onLater: (task) => dispatch({
+            type: 'onLater',
+            payload: task
+        }),
+        showDone: (task) => dispatch({
+            type: 'showDone',
+            payload: task
+        }),
+        showLater: (task) => dispatch({
+            type: 'showLater',
+            payload: task
+        }),
+        editTitle: (task) => dispatch({
+            type: 'editTitle',
+            payload: task
         })
     }
 }

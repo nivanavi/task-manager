@@ -16,21 +16,17 @@ class AddGroup extends Component {
         title.value = '';
     };
 
-
     render() {
         return (
             <div id='add'>
                 <div className='addTask'>
-                    <div>добавить группу</div>
-
                     <div className='adder'>
-                        <div className='title'>
-                            <h3>введите название</h3>
-                            <textarea ref='titleGroup' />
+                        <div className='title'><textarea ref='titleGroup' placeholder='название группы' />
+                            <i className="fa fa-plus-circle add" aria-hidden="true"
+                               onClick={this.groupAdder}>
+                            </i>
                         </div>
-                        <button className='add' onClick={this.groupAdder}>+</button>
                     </div>
-
                 </div>
             </div>
         )

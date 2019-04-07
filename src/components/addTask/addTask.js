@@ -5,7 +5,6 @@ class AddTask extends Component {
 
     taskAdder = () => {
         let title = this.refs.title;
-        let content = this.refs.content;
         let check = this.refs.check.checked;
         let important = false;
 
@@ -13,17 +12,14 @@ class AddTask extends Component {
             important = true;
         }
 
-        if (title.value !== "" && content.value !== "") {
+        if (title.value !== "") {
             this.props.all.all.addTaskToGroup({
                 groupId: this.props.groupId,
                 important: important,
-                title: title.value,
-                content: content.value
+                title: title.value
             });
+            title.value = '';
         }
-
-        title.value = '';
-        content.value = '';
     };
 
 
@@ -34,24 +30,21 @@ class AddTask extends Component {
             return (
                 <div id='add'>
                     <div id={this.props.groupId + 'addButton'} className='addTask'>
-                        <div>добавить задачу</div>
-
                         <div className='adder'>
                             <div className='title'>
-                                <h3>введите название</h3>
-                                <textarea ref='title'/>
+                                <textarea ref='title' placeholder='задача'/>
+                            <i className="fa fa-plus-circle add" aria-hidden="true"
+                               onClick={() => {
+                                   this.taskAdder()
+                               }}>
+                            </i>
                             </div>
-                            <div className='content'>
-                                <h3>введите описание</h3>
-                                <textarea ref='content'/>
+                            <div className='checkDiv'>
+                                <i className="fa fa-question-circle check" aria-hidden="true"></i>
+                                <input ref='check' type="checkbox"/>
                             </div>
-                            <button className='add' onClick={() => {
-                                this.taskAdder()
-                            }}>+
-                            </button>
-                            <p className='check'>важно? <input ref='check' type="checkbox"/></p>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             )

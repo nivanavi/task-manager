@@ -27,7 +27,7 @@ class PlanGroup extends Component {
                 {   this.props.times.times.times.map((times) => {
                     return (
                         <div id={times.id} className='planGroup' key={times.id} onDragOver={this.dragOver} onDrop={(event) => {this.onDrop(event)}}>
-                            <h1 onDrop={this.stopDrop}>{times.start}</h1>
+                            <div className='timeHeader' onDrop={this.stopDrop}>{times.start}</div>
                             {times.tasks.map((task) => {
                                         return (
                                            <OneTask
@@ -38,6 +38,7 @@ class PlanGroup extends Component {
                                                title={task.title}
                                                description={task.description}
                                                deletePlan={this.props.times}
+                                               important={task.important}
                                            />
                                         )
                                     })

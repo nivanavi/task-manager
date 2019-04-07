@@ -8,7 +8,7 @@ class PlanOnDay extends Component {
  render() {
      return (
          <div className="plan">
-             <div className='headerPlan'><h1>План дня</h1></div>
+             <div className='headerPlan'><h1 className='headerName'>План дня</h1></div>
              <div className='placeForeTasksInPlan'>
                  <PlanGroup times={this.props} mainData={this.props.mainData}/>
              </div>
@@ -34,7 +34,11 @@ function mapDispatchToProps(dispatch) {
         onDeleteInPlan: (task) => dispatch({
             type: 'onDeleteInPlan',
             payload: task
-        })
+        }),
+        editTitleInPlan: (task) => dispatch({
+            type: 'editTitleInPlan',
+            payload: task
+        }),
     }
 }
 

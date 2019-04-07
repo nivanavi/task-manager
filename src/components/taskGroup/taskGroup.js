@@ -35,12 +35,12 @@ class TaskGroup extends Component {
                         <div className='group' key={groups.id}>
                             <div className='groupMargin' id={groups.id} onDragOver={this.dragOver} onDrop={(event) => {this.onDrop(event)}}>
                                 <div>
-                                    <h1 className='groupName' onDrop={this.stopDrop}>{groups.groupName}
-                                    <button className='deleteGroup'
-                                            onClick={() => {this.deleteGroup(groups.id)}}>
-                                        завершить
-                                    </button>
-                                    </h1>
+                                    <div onDrop={this.stopDrop}>
+                                        <span className='groupName'>{groups.groupName}</span>
+                                        <i className="fa fa-times deleteGroup" aria-hidden="true"
+                                           onClick={() => {this.deleteGroup(groups.id)}}>
+                                        </i>
+                                    </div>
                                 </div>
                                 { groups.tasks.map((tasks) => {
                                     return (
@@ -53,6 +53,8 @@ class TaskGroup extends Component {
                                             description={tasks.description}
                                             deleteGroup={this.props.all}
                                             important={tasks.important}
+                                            done={tasks.done}
+                                            later={tasks.later}
                                         />
                                     )
                                 })}

@@ -1,12 +1,14 @@
 const initionState = {
     times: [
-        {start: 8, id: '8', tasks: []},
-        {start: 10, id: '10', tasks: []},
-        {start: 12, id: '12', tasks: []},
-        {start: 14, id: '14', tasks: []},
-        {start: 16, id: '16', tasks: []},
-        {start: 18, id: '18', tasks: []},
-        {start: 20, id: '20', tasks: []}
+        {start: '6:00', id: '6', tasks: []},
+        {start: '8:00', id: '8', tasks: []},
+        {start: '10:00', id: '10', tasks: []},
+        {start: '12:00', id: '12', tasks: []},
+        {start: '14:00', id: '14', tasks: []},
+        {start: '16:00', id: '16', tasks: []},
+        {start: '18:00', id: '18', tasks: []},
+        {start: '20:00', id: '20', tasks: []},
+        {start: '22:00', id: '22', tasks: []},
     ]
 };
 
@@ -60,7 +62,9 @@ export default function dayPlan(state = initionState, action) {
                                 group.tasks.push({
                                     title: action.payload.mainData[1],
                                     description: action.payload.mainData[2],
-                                    id: action.payload.mainData[0]})
+                                    id: action.payload.mainData[0],
+                                    important: action.payload.mainData[5]
+                                })
                             }
                             return null;
                         })

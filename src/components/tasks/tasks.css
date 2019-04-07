@@ -12,31 +12,70 @@
 .header {
     margin-left: 20px;
     display: flex;
-    width: 90%;
-    height: 100px;
+    width: 95%;
+    height: 50px;
     justify-content: space-between;
     align-items: center;
 }
 
-.header input, button {
-    border-radius: 10px;
-    background-color: #310B55;
-    border: 1px solid black;
-    color: white;
+.headerName {
+    font-size: 20px;
+    text-transform: uppercase;
 }
 
-.header button:focus {
-    outline: none;
-}
-
-.header input:focus {
-    outline: none;
-}
-
-.showSome {
-    width: 200px;
-    height: 40px;
+.showDone {
+    font-size: 30px;
     display: flex;
+}
+
+.showDoneTrue {
+    color: green;
+}
+
+
+.showDone:active {
+    color: #0E3B0E;
+}
+
+.showLater {
+    font-size: 30px;
+    display: flex;
+}
+.showLater:hover {
+    transform: rotate(180deg);
+    transition: 1s;
+}
+
+.showLaterTrue {
+    color: yellow;
+}
+
+.showLater:active {
+    color: #878327;
+}
+
+.search {
+    font-size: 20px;
+}
+
+.searchSome {
+    font-size: 20px;
+    margin-left: 5px;
+    background-color: inherit;
+    border: none;
+    color: white;
+    height: 20px;
+    width: 20px;
+    margin-right: 180px;
+
+}
+
+.searchSome:focus {
+    outline: none;
+    width: 200px;
+    margin-right: 0;
+    transition: 0.3s;
+    border-bottom: 2px solid white;
 }
 
 .placeForeTasks {

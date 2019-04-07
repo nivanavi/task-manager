@@ -5,12 +5,16 @@ class OneTask extends Component {
 
     dragStart = (event) => {
         const dragId = this.props.dragId.draggableElementId;
-        dragId.splice(0, 5);
+        dragId.splice(0, 8);
         dragId.push(event.target.id,
             this.props.title,
             this.props.description,
             this.props.groupId,
-            this.props.idPlanGroup);
+            this.props.idPlanGroup,
+            this.props.important,
+            this.props.done,
+            this.props.later
+            );
         console.log(dragId)
     };
 
@@ -23,48 +27,110 @@ class OneTask extends Component {
             this.props.deleteGroup.onDeleteInGroup({
                 taskDeleteId: this.props.id
             })
-            // allGroups = this.props.deleteGroup.groups.groups;
-            // allGroups.map((group) => {
-            //     group.tasks.map((task) => {
-            //         if (task.id === this.props.id) {
-            //             group.tasks.splice(group.tasks.indexOf(task), 1);
-            //             return this.props.deleteGroup.onDeleteInGroup(allGroups)
-            //         }
-            //         return null;
-            //     });
-            //     return null;
-            // })
         }
         if (this.props.deletePlan !== undefined) {
             this.props.deletePlan.onDeleteInPlan({
                 taskDeleteId: this.props.id
             })
-            // planGroup = this.props.deletePlan.times.times;
-            // planGroup.map((group) => {
-            //     group.tasks.map((task) => {
-            //         if (task.id === this.props.id) {
-            //             group.tasks.splice(group.tasks.indexOf(task), 1);
-            //             return this.props.deletePlan.onDeleteInPlan(planGroup)
-            //         }
-            //         return null;
-            //     });
-            //     return null;
-            // })
         }
     };
+
+    done = () => {
+        this.props.deleteGroup.onDone({
+            doneId: this.props.id
+        })
+    };
+
+    later = () => {
+        this.props.deleteGroup.onLater({
+            laterId: this.props.id
+        })
+    };
+
+    edit = () => {
+        let newTitle = this.refs.editTitle;
+        this.props.deleteGroup.editTitle({
+            editId: this.props.id,
+            newTitle: newTitle.value
+        });
+        newTitle.value = '';
+        document.getElementById(this.props.id + 'edit').style.display = 'none'
+    };
+
+    showEdit = () => {
+        let id = this.props.id + 'edit';
+        let toggle = document.getElementById(id).style.display;
+
+        if (toggle === 'none' || toggle === '') {
+            document.getElementById(id).style.display = 'block';
+        } else {
+            document.getElementById(id).style.display = 'none';
+        }
+
+    };
+
     render() {
         let classForTask = ['oneTask'];
         if (this.props.important === true) {
             classForTask.push('important')
         }
 
+        let classForDoneTask = ['fa fa-check-square done'];
+        if (this.props.deleteGroup !== undefined) {
+            classForDoneTask.push('visible');
+            if (this.props.done === true) {
+                classForDoneTask.push('doneTrue')
+            }
+        }
+
+
+        let classForLaterTask = ['fa fa-hourglass-start later'];
+        if (this.props.deleteGroup !== undefined) {
+            classForLaterTask.push('visible');
+            if (this.props.later === true) {
+                classForLaterTask.push('laterTrue')
+            }
+        }
+
         return (
             <div id={this.props.id} className={classForTask.join(" ")} draggable='true' onDragStart={(event) => {this.dragStart(event)}} onDrop={this.stopDrop}>
                <div className='oneTaskHeader'>
-                <h2>{this.props.title}</h2>
-                <span onClick={this.delete}>x</span>
+                   <div>{this.props.title}
+                       <i className={classForDoneTask.join(" ")} aria-hidden="true"
+                       onClick={this.done}>
+                       </i>
+                       <i className={classForLaterTask.join(" ")} aria-hidden="true"
+                          onClick={this.later}>
+                       </i>
+
+                   </div> {(() => {
+                       if (this.props.deleteGroup !== undefined) {
+                           return (<div className='editTitle' id={this.props.id + 'edit'}>
+                               <input placeholder='новое название' ref='editTitle'/>
+                               <i className="fa fa-plus btn" aria-hidden="true"
+                                  onClick={this.edit}>
+                               </i>
+                           </div>)
+                       }
+               })()}
+
+                   <div>
+                       {(() => {
+                           if (this.props.deleteGroup !== undefined) {
+                               return (
+                                   <i className="fa fa-ellipsis-h edit" aria-hidden="true"
+                                      onClick={this.showEdit}>
+                                   </i>
+                               )
+                           }
+                       })()}
+
+                       <i className="fa fa-times deleteTask" aria-hidden="true"
+                           onClick={this.delete}>
+                   </i>
+                   </div>
+
                </div>
-                <p>{this.props.description}</p>
             </div>
         )
     }

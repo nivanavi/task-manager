@@ -1,9 +1,13 @@
 .planGroup {
-    border-radius: 10px;
     background-color: #2B2B2B;
-    min-height: 150px;
-    padding-bottom: 30px;
+    padding-bottom: 50px;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     margin-bottom: 5px;
+}
+
+.timeHeader {
+    padding: 10px 0 10px 15px;
+    font-size: 20px;
+    text-transform: uppercase;
 }

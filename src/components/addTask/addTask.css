@@ -1,56 +1,57 @@
 .addTask {
     padding-left: 15px;
-    display: flex;
     background-color: #3C3F41;
-    height: 100px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     flex-direction: column;
-    border-radius: 10px;
     border: 2px solid black;
 }
 
 
 .adder {
     display: flex;
+    justify-content: space-between;
 }
 
 .title {
-    margin-right: 30px;
-    margin-bottom: 0;
-}
-
-.content {
-    margin-right: 30px;
-}
-
-h3 {
-    margin: 0;
+    display: flex;
 }
 
 .add {
-    margin-top: 15px;
-    height: 50px;
-    width: 100px;
-    border-radius: 10px;
-    background-color: #0E3B0E;
-    font-weight: bold;
-    font-size: 30px;
+    margin-top: 10px;
+    color: green;
+    font-size: 40px;
+}
+
+.add:active {
+    color: #0E3B0E;
+    transition: 0.1s;
 }
 
 .adder textarea {
     margin-top: 10px;
-    border-radius: 10px;
-    width: 300px;
-    height: 35px;
-    max-width: 400px;
-    max-height: 35px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    width: 400px;
+    height: 30px;
+    max-width: 600px;
+    max-height: 30px;
     background-color: #1C1D22;
     color: white;
-    font-size: 18px;
-    padding: 0 10px 0 10px;
+    font-size: 20px;
+    padding-top: 5px;
 }
 
 .adder textarea:focus {
     outline: none;
+}
+
+.checkDiv {
+    margin-top: 20px;
+    margin-right: 15px;
+}
+
+.check {
+    color: red;
+    font-size: 20px;
 }
 
