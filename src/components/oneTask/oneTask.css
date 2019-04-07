@@ -1,7 +1,6 @@
 .oneTask {
     display: flex;
     background-color: #3C3F41;
-    margin-bottom: 5px;
     flex-direction: column;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
@@ -22,6 +21,7 @@
 .deleteTask {
     font-size: 15px;
     padding: 5px 10px 5px 10px;
+    margin-left: 10px;
 }
 
 .deleteTask:hover {
@@ -91,4 +91,8 @@
     color: greenyellow;
     margin-left: 5px;
     margin-top: 4px;
+}
+
+.taskPlanMargin {
+    margin-bottom: 10px;
 }

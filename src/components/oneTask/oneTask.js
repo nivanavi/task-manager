@@ -47,14 +47,18 @@ class OneTask extends Component {
         })
     };
 
-    edit = () => {
+    edit = (event) => {
         let newTitle = this.refs.editTitle;
-        this.props.deleteGroup.editTitle({
-            editId: this.props.id,
-            newTitle: newTitle.value
-        });
-        newTitle.value = '';
-        document.getElementById(this.props.id + 'edit').style.display = 'none'
+        if (event.which === 13 || event.which === undefined) {
+            if (newTitle.value !== '') {
+                this.props.deleteGroup.editTitle({
+                    editId: this.props.id,
+                    newTitle: newTitle.value
+                });
+                newTitle.value = '';
+                document.getElementById(this.props.id + 'edit').style.display = 'none'
+            }
+        }
     };
 
     showEdit = () => {
@@ -73,6 +77,10 @@ class OneTask extends Component {
         let classForTask = ['oneTask'];
         if (this.props.important === true) {
             classForTask.push('important')
+        }
+
+        if (this.props.deletePlan !== undefined) {
+            classForTask.push('taskPlanMargin')
         }
 
         let classForDoneTask = ['fa fa-check-square done'];
@@ -106,7 +114,7 @@ class OneTask extends Component {
                    </div> {(() => {
                        if (this.props.deleteGroup !== undefined) {
                            return (<div className='editTitle' id={this.props.id + 'edit'}>
-                               <input placeholder='новое название' ref='editTitle'/>
+                               <input placeholder='новое название' ref='editTitle' onKeyPress={this.edit}/>
                                <i className="fa fa-plus btn" aria-hidden="true"
                                   onClick={this.edit}>
                                </i>

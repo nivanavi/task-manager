@@ -99,11 +99,11 @@ export default function allTasks(state = initionState, action) {
                 })
             }
 
-            if(allGroupId.indexOf(action.payload.eventId) !== -1) {
+            if(allGroupId.indexOf(action.payload.groupId) !== -1) {
                     allGroups.map((group) => {
-                        if (action.payload.eventId === group.id) {
+                        if (action.payload.groupId === group.id) {
                             let allTasks = [...group.tasks];
-                            allTasks.push({
+                            allTasks.splice(action.payload.eventId, 0, {
                                 title: action.payload.mainData[1],
                                 description: action.payload.mainData[2],
                                 id: action.payload.mainData[0],

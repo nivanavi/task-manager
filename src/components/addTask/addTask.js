@@ -3,7 +3,7 @@ import './addTask.css';
 
 class AddTask extends Component {
 
-    taskAdder = () => {
+    taskAdder = (event) => {
         let title = this.refs.title;
         let check = this.refs.check.checked;
         let important = false;
@@ -11,15 +11,17 @@ class AddTask extends Component {
         if (check === true) {
             important = true;
         }
-
-        if (title.value !== "") {
-            this.props.all.all.addTaskToGroup({
-                groupId: this.props.groupId,
-                important: important,
-                title: title.value
-            });
-            title.value = '';
-        }
+if (event.which === 13 || event.which === undefined) {
+    event.preventDefault();
+    if (title.value !== "") {
+        this.props.all.all.addTaskToGroup({
+            groupId: this.props.groupId,
+            important: important,
+            title: title.value
+        });
+        title.value = '';
+    }
+}
     };
 
 
@@ -32,15 +34,14 @@ class AddTask extends Component {
                     <div id={this.props.groupId + 'addButton'} className='addTask'>
                         <div className='adder'>
                             <div className='title'>
-                                <textarea ref='title' placeholder='задача'/>
+                                <textarea ref='title' placeholder='задача' onKeyPress={this.taskAdder}/>
                             <i className="fa fa-plus-circle add" aria-hidden="true"
-                               onClick={() => {
-                                   this.taskAdder()
-                               }}>
+                               onClick={this.taskAdder}>
                             </i>
                             </div>
                             <div className='checkDiv'>
-                                <i className="fa fa-question-circle check" aria-hidden="true"></i>
+                                <i className="fa fa-question-circle check" aria-hidden="true">
+                                </i>
                                 <input ref='check' type="checkbox"/>
                             </div>
 

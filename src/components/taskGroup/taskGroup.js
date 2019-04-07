@@ -10,12 +10,13 @@ class TaskGroup extends Component {
         event.preventDefault();
     };
 
-    onDrop = (event) => {
+    onDrop = (event, groupId) => {
         event.preventDefault();
         let data = this.props.mainData.draggableElementId;
         this.props.all.dropTaskToGroup({
             mainData: data,
-            eventId: event.target.id
+            eventId: event.target.id,
+            groupId: groupId
         })
     };
 
@@ -33,7 +34,7 @@ class TaskGroup extends Component {
             {   this.props.groups.groups.map((groups) => {
                     return (
                         <div className='group' key={groups.id}>
-                            <div className='groupMargin' id={groups.id} onDragOver={this.dragOver} onDrop={(event) => {this.onDrop(event)}}>
+                            <div className='groupMargin' id={groups.id}>
                                 <div>
                                     <div onDrop={this.stopDrop}>
                                         <span className='groupName'>{groups.groupName}</span>
@@ -42,12 +43,17 @@ class TaskGroup extends Component {
                                         </i>
                                     </div>
                                 </div>
+                                <div id='0' className='dropDiv'
+                                     onDragOver={this.dragOver}
+                                     onDrop={(event) => {this.onDrop(event, groups.id)}}>
+                                </div>
                                 { groups.tasks.map((tasks) => {
+                                    const dropNumber = (groups.tasks.indexOf(tasks));
                                     return (
+                                        <div key={tasks.id}>
                                         <OneTask
                                             groupId={groups.id}
                                             dragId={this.props.mainData}
-                                            key={tasks.id}
                                             id={tasks.id}
                                             title={tasks.title}
                                             description={tasks.description}
@@ -56,6 +62,11 @@ class TaskGroup extends Component {
                                             done={tasks.done}
                                             later={tasks.later}
                                         />
+                                            <div id={dropNumber + 1} className='dropDiv'
+                                                 onDragOver={this.dragOver}
+                                                 onDrop={(event) => {this.onDrop(event, groups.id)}}>
+                                            </div>
+                                        </div>
                                     )
                                 })}
                             </div>
