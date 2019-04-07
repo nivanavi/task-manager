@@ -15,6 +15,10 @@ class PlanGroup extends Component {
             mainData: this.props.mainData.draggableElementId,
             eventId: event.target.id
         });
+        this.props.times.rootEdit.styleInPlan({
+            mainData: this.props.mainData.draggableElementId,
+            switchValue: true
+        })
     };
 
     stopDrop = (event) => {

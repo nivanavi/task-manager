@@ -4,8 +4,9 @@ import './oneTask.css';
 class OneTask extends Component {
 
     dragStart = (event) => {
+        document.getElementById(event.target.id).style.opacity = '1';
         const dragId = this.props.dragId.draggableElementId;
-        dragId.splice(0, 8);
+        dragId.splice(0, 9);
         dragId.push(event.target.id,
             this.props.title,
             this.props.description,
@@ -13,7 +14,8 @@ class OneTask extends Component {
             this.props.idPlanGroup,
             this.props.important,
             this.props.done,
-            this.props.later
+            this.props.later,
+            this.props.inPlan
             );
         console.log(dragId)
     };
@@ -26,11 +28,20 @@ class OneTask extends Component {
         if (this.props.deleteGroup !== undefined) {
             this.props.deleteGroup.onDeleteInGroup({
                 taskDeleteId: this.props.id
-            })
+            });
+            this.props.deleteGroup.rootEdit.rootDeleteInPlan(
+                {
+                    taskDeleteId: this.props.id
+                }
+            )
         }
         if (this.props.deletePlan !== undefined) {
             this.props.deletePlan.onDeleteInPlan({
                 taskDeleteId: this.props.id
+            });
+            this.props.deletePlan.rootEdit.styleInPlan({
+                mainData: this.props.dragId.draggableElementId,
+                switchValue: false
             })
         }
     };
@@ -55,6 +66,11 @@ class OneTask extends Component {
                     editId: this.props.id,
                     newTitle: newTitle.value
                 });
+                this.props.deleteGroup.rootEdit.editTitleInPlan({
+                        editId: this.props.id,
+                        newTitle: newTitle.value
+                    }
+                );
                 newTitle.value = '';
                 document.getElementById(this.props.id + 'edit').style.display = 'none'
             }
@@ -79,35 +95,39 @@ class OneTask extends Component {
             classForTask.push('important')
         }
 
+        if (this.props.inPlan === true) {
+            classForTask.push('inPlan')
+        }
+
         if (this.props.deletePlan !== undefined) {
             classForTask.push('taskPlanMargin')
         }
 
-        let classForDoneTask = ['fa fa-check-square done'];
+
+
+        let classForLaterDoneTask = [];
         if (this.props.deleteGroup !== undefined) {
-            classForDoneTask.push('visible');
+            classForTask.push('visible');
             if (this.props.done === true) {
-                classForDoneTask.push('doneTrue')
+                classForTask.push('doneTrue')
             }
         }
 
-
-        let classForLaterTask = ['fa fa-hourglass-start later'];
         if (this.props.deleteGroup !== undefined) {
-            classForLaterTask.push('visible');
+            classForTask.push('visible');
             if (this.props.later === true) {
-                classForLaterTask.push('laterTrue')
+                classForTask.push('laterTrue')
             }
         }
 
         return (
-            <div id={this.props.id} className={classForTask.join(" ")} draggable='true' onDragStart={(event) => {this.dragStart(event)}} onDrop={this.stopDrop}>
+            <div id={this.props.id} className={classForTask.join(" ")} draggable='true' onDragStart={this.dragStart} onDrop={this.stopDrop}>
                <div className='oneTaskHeader'>
-                   <div>{this.props.title}
-                       <i className={classForDoneTask.join(" ")} aria-hidden="true"
+                   <div className={classForLaterDoneTask.join(" ")}>{this.props.title}
+                       <i className='fa fa-check-square done' aria-hidden="true"
                        onClick={this.done}>
                        </i>
-                       <i className={classForLaterTask.join(" ")} aria-hidden="true"
+                       <i className='fa fa-hourglass-start later' aria-hidden="true"
                           onClick={this.later}>
                        </i>
 

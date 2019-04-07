@@ -88,6 +88,39 @@ export default function dayPlan(state = initionState, action) {
             return {
                 times: allGroups
             };
+
+        case 'editTitleInPlan':
+            allGroups.map((group) => {
+                let allTasks = [...group.tasks];
+                allTasks.map((task) => {
+                    if (task.id === action.payload.editId) {
+                        task.title = action.payload.newTitle
+                    }
+                    group.tasks = allTasks;
+                    return null;
+                });
+                return null;
+            });
+            return {
+                times: allGroups
+            };
+
+        case 'rootDeleteInPlan':
+            allGroups.map((group) => {
+                let allTasks = [...group.tasks];
+                allTasks.map((task) => {
+                    if (task.id === action.payload.taskDeleteId) {
+                        allTasks.splice(allTasks.indexOf(task), 1)
+                    }
+                    group.tasks = allTasks;
+                    return null;
+                });
+                return null;
+            });
+            return {
+                times: allGroups
+            };
+
         default:
             return state
     }

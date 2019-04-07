@@ -3,7 +3,6 @@
     background-color: #2B2B2B;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
-    margin-bottom: 10px;
 }
 
 .groupName {
@@ -31,6 +30,12 @@
 .dropDiv {
     width: 100%;
     height: 15px;
+}
+
+.dropGroup {
+    background-color: red;
+    width: 100%;
+    height: 25px;
 }
 
 

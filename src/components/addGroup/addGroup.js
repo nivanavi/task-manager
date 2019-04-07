@@ -4,16 +4,14 @@ import '../addTask/addTask.css';
 class AddGroup extends Component {
 
     groupAdder = (event) => {
+        const title = this.refs.titleGroup;
         if (event.which === 13 || event.which === undefined) {
-            event.preventDefault();
-            const title = this.refs.titleGroup;
-
-            if (title.value !== " ") {
-                this.props.all.all.addGroup({
-                    title: title.value
-                })
-            }
-
+                event.preventDefault();
+                if (title.value !== "") {
+                    this.props.all.all.addGroup({
+                        title: title.value
+                    })
+                }
 
             title.value = '';
         }
