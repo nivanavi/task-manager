@@ -18,10 +18,9 @@ if (this.props.mainData.draggableElementId.length !== 0) {
     this.props.times.rootEdit.styleInPlan({
         mainData: this.props.mainData.draggableElementId,
         switchValue: true
-    })
+    });
 }
         this.props.mainData.draggableElementId.splice(0, 9);
-
     };
 
     stopDrop = (event) => {

@@ -272,7 +272,7 @@ export default function allTasks(state = initionState, action) {
             allGroups.map((group) => {
                 let allTasks = [...group.tasks];
                 allTasks.map((task) => {
-                    if (task.id === action.payload.mainData[0]) {
+                    if (task.id === action.payload.mainData[0] || task.id === action.payload.mainData) {
                         task.inPlan = action.payload.switchValue
                     }
                     group.tasks = allTasks;

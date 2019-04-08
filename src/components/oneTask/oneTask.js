@@ -25,22 +25,23 @@ class OneTask extends Component {
     };
 
     delete = () => {
+        const id = this.props.id;
         if (this.props.deleteGroup !== undefined) {
             this.props.deleteGroup.onDeleteInGroup({
-                taskDeleteId: this.props.id
+                taskDeleteId: id
             });
             this.props.deleteGroup.rootEdit.rootDeleteInPlan(
                 {
-                    taskDeleteId: this.props.id
+                    taskDeleteId: id
                 }
             )
         }
         if (this.props.deletePlan !== undefined) {
             this.props.deletePlan.onDeleteInPlan({
-                taskDeleteId: this.props.id
+                taskDeleteId: id
             });
             this.props.deletePlan.rootEdit.styleInPlan({
-                mainData: this.props.dragId.draggableElementId,
+                mainData: id,
                 switchValue: false
             })
         }
