@@ -23,10 +23,10 @@ class Tasks extends Component {
             <div className="tasks">
                 <div className='header'>
                     <h1 className='headerName'>Задачи</h1>
-                        <i className={classForDoneBtn.join(" ")} aria-hidden="true"
+                        <i className={classForDoneBtn.join(" ")} id='done' aria-hidden="true"
                         onClick={this.props.showDone}>
                         </i>
-                        <i className={classForLaterBtn.join(" ")} aria-hidden="true"
+                        <i className={classForLaterBtn.join(" ")} id='later' aria-hidden="true"
                            onClick={this.props.showLater}>
                         </i>
                     <div>

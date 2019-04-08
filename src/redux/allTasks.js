@@ -178,6 +178,7 @@ export default function allTasks(state = initionState, action) {
             let arrDivDrop = document.getElementsByClassName('dropDiv');
             if (state.filterDone === false) {
                 let arrDone = document.getElementsByClassName('doneTrue');
+                document.getElementById('later').style.visibility = 'hidden';
 
                 for (let i = 0; i < arrAll.length; i++) {
                     arrAll[i].style.display = 'none';
@@ -197,6 +198,7 @@ export default function allTasks(state = initionState, action) {
                     filterLater: state.filterLater
                 };
             } else {
+                document.getElementById('later').style.visibility = 'visible';
                 for (let i = 0; i < arrAll.length; i++) {
                     arrAll[i].style.display = 'block';
                 }
@@ -216,6 +218,7 @@ export default function allTasks(state = initionState, action) {
             let arrAllLater = document.getElementsByClassName('oneTask');
             let arrDivDropL = document.getElementsByClassName('dropDiv');
             if (state.filterLater === false) {
+                document.getElementById('done').style.visibility = 'hidden';
                 let arrLater = document.getElementsByClassName('laterTrue');
 
                 for (let i = 0; i < arrAllLater.length; i++) {
@@ -236,6 +239,7 @@ export default function allTasks(state = initionState, action) {
                     filterLater: true
                 };
             } else {
+                document.getElementById('done').style.visibility = 'visible';
                 for (let i = 0; i < arrAllLater.length; i++) {
                     arrAllLater[i].style.display = 'block';
                 }
