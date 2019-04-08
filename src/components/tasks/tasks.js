@@ -93,6 +93,10 @@ function mapDispatchToProps(dispatch) {
         editTitle: (task) => dispatch({
             type: 'editTitle',
             payload: task
+        }),
+        sortGroup: (task) => dispatch({
+            type: 'sortGroup',
+            payload: task
         })
     }
 }

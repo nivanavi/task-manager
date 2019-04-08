@@ -28,32 +28,31 @@ class TaskGroup extends Component {
         event.stopPropagation();
     };
 
-    // dragStartGroup = (event) => {
-    //
-    // };
-    //
-    // onDropGroup = (event, groupId) => {
-    //     event.preventDefault();
-    //     let data = this.props.mainData.draggableElementId;
-    //     this.props.all.dropTaskToGroup({
-    //         mainData: data,
-    //         eventId: event.target.id,
-    //         groupId: groupId
-    //     })
-    // };
+    dragStartGroup = (event) => {
+        event.dataTransfer.setData('groupId', event.target.id);
+    };
+
+    onDropGroup = (event) => {
+        event.preventDefault();
+        const groupDragId = event.dataTransfer.getData('groupId');
+        this.props.all.sortGroup({
+            placeId: event.target.id,
+            groupId: groupDragId
+        })
+    };
 
     render() {
         return (
             <div>
-                {/*<div id='0' className='dropGroup'*/}
-                     {/*onDragOver={this.dragOver}*/}
-                     {/*onDrop={(event) => {this.onDropGroup(event, this.props.groups.groups.id)}}>*/}
-                {/*</div>*/}
+                <div id='0' className='dropGroup'
+                     onDragOver={this.dragOver}
+                     onDrop={this.onDropGroup}>
+                </div>
             {   this.props.groups.groups.map((groups) => {
-                // const dropNumGroup = this.props.groups.groups.indexOf(groups);
+                const dropNumGroup = this.props.groups.groups.indexOf(groups);
                     return (
                         <div key={groups.id}>
-                        <div className='group'>
+                        <div className='group' id={groups.id} draggable='true' onDragStart={this.dragStartGroup}>
                             <div className='groupMargin'>
                                 <div>
                                     <div onDrop={this.stopDrop}>
@@ -93,10 +92,10 @@ class TaskGroup extends Component {
                             </div>
                             <AddTask all={this.props} groupId={groups.id}/>
                         </div>
-                            {/*<div id={dropNumGroup + 1} className='dropGroup'*/}
-                                 {/*onDragOver={this.dragOver}*/}
-                                 {/*onDrop={(event) => {this.onDropGroup(event, groups.id)}}>*/}
-                            {/*</div>*/}
+                            <div id={dropNumGroup + 1} className='dropGroup'
+                                 onDragOver={this.dragOver}
+                                 onDrop={(event) => {this.onDropGroup(event, groups.id)}}>
+                            </div>
                     </div>)
             })}
             <AddGroup all={this.props}/>
