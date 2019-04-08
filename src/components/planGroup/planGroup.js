@@ -10,15 +10,17 @@ class PlanGroup extends Component {
 
     onDrop = (event) => {
         event.preventDefault();
+if (this.props.mainData.draggableElementId.length !== 0) {
+    this.props.times.addTaskToDayPlan({
+        mainData: this.props.mainData.draggableElementId,
+        eventId: event.target.id
+    });
+    this.props.times.rootEdit.styleInPlan({
+        mainData: this.props.mainData.draggableElementId,
+        switchValue: true
+    })
+}
 
-        this.props.times.addTaskToDayPlan({
-            mainData: this.props.mainData.draggableElementId,
-            eventId: event.target.id
-        });
-        this.props.times.rootEdit.styleInPlan({
-            mainData: this.props.mainData.draggableElementId,
-            switchValue: true
-        })
     };
 
     stopDrop = (event) => {

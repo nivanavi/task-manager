@@ -29,6 +29,7 @@ class TaskGroup extends Component {
     };
 
     dragStartGroup = (event) => {
+        this.props.mainData.draggableElementId.splice(0, 9);
         event.dataTransfer.setData('groupId', event.target.id);
     };
 
