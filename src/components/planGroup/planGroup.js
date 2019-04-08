@@ -20,6 +20,7 @@ if (this.props.mainData.draggableElementId.length !== 0) {
         switchValue: true
     })
 }
+        this.props.mainData.draggableElementId.splice(0, 9);
 
     };
 

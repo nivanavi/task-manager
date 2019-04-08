@@ -17,7 +17,8 @@ class TaskGroup extends Component {
             mainData: data,
             eventId: event.target.id,
             groupId: groupId
-        })
+        });
+        this.props.mainData.draggableElementId.splice(0, 9);
     };
 
     deleteGroup = (id) => {
@@ -29,7 +30,6 @@ class TaskGroup extends Component {
     };
 
     dragStartGroup = (event) => {
-        this.props.mainData.draggableElementId.splice(0, 9);
         event.dataTransfer.setData('groupId', event.target.id);
     };
 
