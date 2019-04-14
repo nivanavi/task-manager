@@ -25,9 +25,9 @@ export default function dayPlan(state = initionState, action) {
             });
 
                 if (action.payload.mainData[4] !== undefined) {
-                allGroups.map((groups) => {
+                allGroups.find((groups) => {
                     if (groups.id === action.payload.mainData[4]) {
-                        groups.tasks.map((task) => {
+                        groups.tasks.find((task) => {
                             if (task.id === action.payload.mainData[0]) {
                                 groups.tasks.splice(groups.tasks.indexOf(task), 1)
                             }
@@ -41,7 +41,7 @@ export default function dayPlan(state = initionState, action) {
 
                 if (action.payload.mainData[3] !== undefined) {
                     allGroups.map((groups) => {
-                            groups.tasks.map((task) => {
+                            groups.tasks.find((task) => {
                                 if (task.id === action.payload.mainData[0]) {
                                     groups.tasks.map((task) => {
                                         if (task.id === action.payload.mainData[0]) {
@@ -56,14 +56,16 @@ export default function dayPlan(state = initionState, action) {
                     });
                 }
 
-                if(allGroupId.indexOf(action.payload.eventId) !== -1) {
-                        allGroups.map((group) => {
+                if (allGroupId.indexOf(action.payload.eventId) !== -1) {
+                        allGroups.find((group) => {
                             if (action.payload.eventId === group.id) {
                                 group.tasks.push({
                                     title: action.payload.mainData[1],
                                     description: action.payload.mainData[2],
                                     id: action.payload.mainData[0],
-                                    important: action.payload.mainData[5]
+                                    important: action.payload.mainData[5],
+                                    done: action.payload.mainData[6],
+                                    later: action.payload.mainData[7]
                                 })
                             }
                             return null;
@@ -75,7 +77,7 @@ export default function dayPlan(state = initionState, action) {
             };
         case 'onDeleteInPlan':
             allGroups.map((group) => {
-                group.tasks.map((task) => {
+                group.tasks.find((task) => {
                     if (task.id === action.payload.taskDeleteId) {
                         let allTasks = [...group.tasks];
                         allTasks.splice(group.tasks.indexOf(task), 1);
@@ -92,7 +94,7 @@ export default function dayPlan(state = initionState, action) {
         case 'editTitleInPlan':
             allGroups.map((group) => {
                 let allTasks = [...group.tasks];
-                allTasks.map((task) => {
+                allTasks.find((task) => {
                     if (task.id === action.payload.editId) {
                         task.title = action.payload.newTitle
                     }
@@ -108,9 +110,43 @@ export default function dayPlan(state = initionState, action) {
         case 'rootDeleteInPlan':
             allGroups.map((group) => {
                 let allTasks = [...group.tasks];
-                allTasks.map((task) => {
+                allTasks.find((task) => {
                     if (task.id === action.payload.taskDeleteId) {
                         allTasks.splice(allTasks.indexOf(task), 1)
+                    }
+                    group.tasks = allTasks;
+                    return null;
+                });
+                return null;
+            });
+            return {
+                times: allGroups
+            };
+
+        case 'onDoneInPlan':
+        case 'rootDonePlan':
+            allGroups.map((group) => {
+                let allTasks = [...group.tasks];
+                allTasks.find((task) => {
+                    if (task.id === action.payload.doneId) {
+                        task.done = !task.done;
+                    }
+                    group.tasks = allTasks;
+                    return null;
+                });
+                return null;
+            });
+            return {
+                times: allGroups
+            };
+
+        case 'onLaterInPlan':
+        case 'rootLaterPlan':
+            allGroups.map((group) => {
+                let allTasks = [...group.tasks];
+                allTasks.find((task) => {
+                    if (task.id === action.payload.laterId) {
+                        task.later = !task.later;
                     }
                     group.tasks = allTasks;
                     return null;

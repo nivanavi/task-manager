@@ -12,6 +12,7 @@ class TaskGroup extends Component {
 
     onDrop = (event, groupId) => {
         event.preventDefault();
+        event.target.classList.add('enterRemove');
         let data = this.props.mainData.draggableElementId;
         this.props.all.dropTaskToGroup({
             mainData: data,
@@ -35,6 +36,7 @@ class TaskGroup extends Component {
 
     onDropGroup = (event) => {
         event.preventDefault();
+        event.target.classList.add('enterRemove');
         const groupDragId = event.dataTransfer.getData('groupId');
         this.props.all.sortGroup({
             placeId: event.target.id,
@@ -42,11 +44,29 @@ class TaskGroup extends Component {
         })
     };
 
+    onDragEnterSort = (event) => {
+        let data = this.props.mainData.draggableElementId;
+        if (data[0] === undefined) {
+            event.target.classList.remove('enterRemove');
+            event.target.classList.add('enter')
+        }
+    };
+
+    onDragLeaveSort = (event) => {
+        let data = this.props.mainData.draggableElementId;
+        if (data[0] === undefined) {
+            event.target.classList.remove('enter');
+            event.target.classList.add('enterRemove')
+        }
+    };
+
     render() {
         return (
             <div>
                 <div id='0' className='dropGroup'
                      onDragOver={this.dragOver}
+                     onDragEnter={this.onDragEnterSort}
+                     onDragLeave={this.onDragLeaveSort}
                      onDrop={this.onDropGroup}>
                 </div>
             {   this.props.groups.groups.map((groups) => {
@@ -95,6 +115,8 @@ class TaskGroup extends Component {
                         </div>
                             <div id={dropNumGroup + 1} className='dropGroup'
                                  onDragOver={this.dragOver}
+                                 onDragEnter={this.onDragEnterSort}
+                                 onDragLeave={this.onDragLeaveSort}
                                  onDrop={(event) => {this.onDropGroup(event, groups.id)}}>
                             </div>
                     </div>)

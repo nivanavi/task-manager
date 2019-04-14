@@ -38,7 +38,28 @@ function mapDispatchToProps(dispatch) {
         styleInPlan: (task) => dispatch({
             type: 'styleInPlan',
             payload: task
+        }),
+        rootEditTitleGroup: (task) => dispatch({
+            type: 'rootEditTitleGroup',
+            payload: task
+        }),
+        rootLaterGroup: (task) => dispatch({
+            type: 'rootLaterGroup',
+            payload: task
+        }),
+        rootDoneGroup: (task) => dispatch({
+            type: 'rootDoneGroup',
+            payload: task
+        }),
+        rootLaterPlan: (task) => dispatch({
+            type: 'rootLaterPlan',
+            payload: task
+        }),
+        rootDonePlan: (task) => dispatch({
+            type: 'rootDonePlan',
+            payload: task
         })
+
     }
 }
 

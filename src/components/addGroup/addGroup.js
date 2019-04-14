@@ -22,10 +22,8 @@ class AddGroup extends Component {
             <div id='add'>
                 <div className='addTask'>
                     <div className='adder'>
-                        <div className='title'><textarea ref='titleGroup' placeholder='название группы' onKeyPress={this.groupAdder}/>
-                            <i className="fa fa-plus-circle add" aria-hidden="true"
-                               onClick={this.groupAdder}>
-                            </i>
+                        <div className='title'><input ref='titleGroup' placeholder='добавить группу' onKeyPress={this.groupAdder}/>
+
                         </div>
                     </div>
                 </div>

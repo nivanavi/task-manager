@@ -23,16 +23,15 @@ export default function allTasks(state = initionState, action) {
     let allGroups = [...state.groups];
     switch (action.type) {
         case 'addTaskToGroup':
-            const idTask = (Math.round(Math.random() * 10000)).toString();
-            allGroups.map((group) => {
+            const idTask = new Date().getTime().toString(20) + Math.floor(Math.random() * 1000).toString(20);
+            allGroups.find((group) => {
                 if (group.id === action.payload.groupId) {
-                    let allTasks = [...group.tasks];
-                    allTasks.push({
+                    let allTasks = [...group.tasks, {
                         title: action.payload.title,
                         description: '',
                         id: idTask,
                         important: action.payload.important
-                    });
+                    }];
                     group.tasks = allTasks;
                 }
                 return null;
@@ -44,7 +43,7 @@ export default function allTasks(state = initionState, action) {
             };
 
         case 'addGroup':
-            const idGroup = (Math.round(Math.random() * 10000)).toString();
+            const idGroup = new Date().getTime().toString(20) + Math.floor(Math.random() * 1000).toString(20);
             allGroups.push({
                 groupName: action.payload.title,
                 id: idGroup,
@@ -86,7 +85,7 @@ export default function allTasks(state = initionState, action) {
             }
 
             if (action.payload.mainData[4] === undefined) {
-                allGroups.map((group) => {
+                allGroups.find((group) => {
                     if (group.id === action.payload.mainData[3]) {
                         group.tasks.map((task) => {
                             if (task.id === action.payload.mainData[0]) {
@@ -126,14 +125,14 @@ export default function allTasks(state = initionState, action) {
 
         case 'onDeleteInGroup':
                 allGroups.map((group) => {
-                group.tasks.map((task) => {
-                    if (task.id === action.payload.taskDeleteId) {
-                        let allTasks = [...group.tasks];
-                        allTasks.splice(group.tasks.indexOf(task), 1);
-                        group.tasks = allTasks;
-                    }
-                    return null;
-                });
+                    group.tasks.find((needTask) => {
+                        if (needTask.id === action.payload.taskDeleteId) {
+                            let allTasks = [...group.tasks];
+                            allTasks.splice(group.tasks.indexOf(needTask), 1);
+                            group.tasks = allTasks;
+                        }
+                        return null;
+                    });
                 return null;
             });
             return {
@@ -143,12 +142,13 @@ export default function allTasks(state = initionState, action) {
             };
 
         case 'onDone':
+        case 'rootDoneGroup':
             allGroups.map((group) => {
-                group.tasks.map((task) => {
-                    if (task.id === action.payload.doneId) {
-                        task.done = !task.done;
-                    }
-                    return null;
+                group.tasks.find((needTask) => {
+                    if (needTask.id === action.payload.doneId) {
+                        needTask.done = !needTask.done;
+                            }
+                            return null;
                 });
                 return null;
             });
@@ -159,10 +159,11 @@ export default function allTasks(state = initionState, action) {
             };
 
         case 'onLater':
+        case 'rootLaterGroup':
             allGroups.map((group) => {
-                group.tasks.map((task) => {
-                    if (task.id === action.payload.laterId) {
-                        task.later = !task.later;
+                group.tasks.find((needTask) => {
+                    if (needTask.id === action.payload.laterId) {
+                        needTask.later = !needTask.later;
                     }
                     return null;
                 });
@@ -255,13 +256,14 @@ export default function allTasks(state = initionState, action) {
             }
 
         case 'editTitle':
+        case 'rootEditTitleGroup':
             allGroups.map((group) => {
                 let allTasks = [...group.tasks];
-                allTasks.map((task) => {
-                    if (task.id === action.payload.editId) {
-                        task.title = action.payload.newTitle
-                    }
-                    group.tasks = allTasks;
+                allTasks.find((needTask) => {
+                        if (needTask.id === action.payload.editId) {
+                            needTask.title = action.payload.newTitle
+                        }
+                        group.tasks = allTasks;
                     return null;
                 });
                 return null;
@@ -275,9 +277,9 @@ export default function allTasks(state = initionState, action) {
         case 'styleInPlan':
             allGroups.map((group) => {
                 let allTasks = [...group.tasks];
-                allTasks.map((task) => {
-                    if (task.id === action.payload.mainData[0] || task.id === action.payload.mainData) {
-                        task.inPlan = action.payload.switchValue
+                allTasks.find((needTask) => {
+                    if (needTask.id === action.payload.mainData[0] || needTask.id === action.payload.mainData) {
+                        needTask.inPlan = action.payload.switchValue
                     }
                     group.tasks = allTasks;
                     return null;
@@ -291,7 +293,7 @@ export default function allTasks(state = initionState, action) {
             };
 
         case 'sortGroup':
-            allGroups.map((group) => {
+            allGroups.find((group) => {
                if (group.id === action.payload.groupId) {
                    allGroups.splice(allGroups.indexOf(group), 1);
                    allGroups.splice(action.payload.placeId, 0, group);

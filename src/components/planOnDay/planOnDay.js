@@ -39,6 +39,14 @@ function mapDispatchToProps(dispatch) {
             type: 'editTitleInPlan',
             payload: task
         }),
+        onDoneInPlan: (task) => dispatch({
+            type: 'onDoneInPlan',
+            payload: task
+        }),
+        onLaterInPlan: (task) => dispatch({
+            type: 'onLaterInPlan',
+            payload: task
+        }),
     }
 }
 

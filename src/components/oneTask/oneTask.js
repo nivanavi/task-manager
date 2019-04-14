@@ -48,46 +48,66 @@ class OneTask extends Component {
     };
 
     done = () => {
-        this.props.deleteGroup.onDone({
-            doneId: this.props.id
-        })
+        if (this.props.deletePlan !== undefined) {
+            this.props.deletePlan.onDoneInPlan({
+                doneId: this.props.id
+            });
+            this.props.deletePlan.rootEdit.rootDoneGroup({
+                doneId: this.props.id
+            })
+        } else {
+            this.props.deleteGroup.onDone({
+                doneId: this.props.id
+            });
+            this.props.deleteGroup.rootEdit.rootDonePlan({
+                doneId: this.props.id
+            })
+        }
     };
 
     later = () => {
-        this.props.deleteGroup.onLater({
-            laterId: this.props.id
-        })
+        if (this.props.deletePlan !== undefined) {
+            this.props.deletePlan.onLaterInPlan({
+                laterId: this.props.id
+            });
+            this.props.deletePlan.rootEdit.rootLaterGroup({
+                laterId: this.props.id
+            })
+        } else {
+            this.props.deleteGroup.onLater({
+                laterId: this.props.id
+            });
+            this.props.deleteGroup.rootEdit.rootLaterPlan({
+                laterId: this.props.id
+            })
+        }
     };
 
-    edit = (event) => {
-        let newTitle = this.refs.editTitle;
-        if (event.which === 13 || event.which === undefined) {
-            if (newTitle.value !== '') {
-                this.props.deleteGroup.editTitle({
+    edit = () => {
+        let newTitle = this.refs.title;
+
+        if (this.props.deletePlan !== undefined) {
+            this.props.deletePlan.editTitleInPlan({
                     editId: this.props.id,
                     newTitle: newTitle.value
-                });
-                this.props.deleteGroup.rootEdit.editTitleInPlan({
-                        editId: this.props.id,
-                        newTitle: newTitle.value
-                    }
-                );
-                newTitle.value = '';
-                document.getElementById(this.props.id + 'edit').style.display = 'none'
-            }
-        }
-    };
-
-    showEdit = () => {
-        let id = this.props.id + 'edit';
-        let toggle = document.getElementById(id).style.display;
-
-        if (toggle === 'none' || toggle === '') {
-            document.getElementById(id).style.display = 'block';
+                }
+            );
+            this.props.deletePlan.rootEdit.rootEditTitleGroup({
+                    editId: this.props.id,
+                    newTitle: newTitle.value
+                }
+            );
         } else {
-            document.getElementById(id).style.display = 'none';
+            this.props.deleteGroup.editTitle({
+                editId: this.props.id,
+                newTitle: newTitle.value
+            });
+            this.props.deleteGroup.rootEdit.editTitleInPlan({
+                    editId: this.props.id,
+                    newTitle: newTitle.value
+                }
+            );
         }
-
     };
 
     render() {
@@ -107,24 +127,21 @@ class OneTask extends Component {
 
 
         let classForLaterDoneTask = [];
-        if (this.props.deleteGroup !== undefined) {
             classForTask.push('visible');
             if (this.props.done === true) {
                 classForTask.push('doneTrue')
             }
-        }
 
-        if (this.props.deleteGroup !== undefined) {
             classForTask.push('visible');
             if (this.props.later === true) {
                 classForTask.push('laterTrue')
             }
-        }
 
         return (
             <div id={this.props.id} className={classForTask.join(" ")} draggable='true' onDragStart={this.dragStart} onDrop={this.stopDrop}>
                <div className='oneTaskHeader'>
-                   <div className={classForLaterDoneTask.join(" ")}>{this.props.title}
+                   <div className={classForLaterDoneTask.join(" ")}>
+                       <input onChange={this.edit} ref='title' value={this.props.title}  id={this.props.id + 'title'}/>
                        <i className='fa fa-check-square done' aria-hidden="true"
                        onClick={this.done}>
                        </i>
@@ -132,28 +149,9 @@ class OneTask extends Component {
                           onClick={this.later}>
                        </i>
 
-                   </div> {(() => {
-                       if (this.props.deleteGroup !== undefined) {
-                           return (<div className='editTitle' id={this.props.id + 'edit'}>
-                               <input placeholder='новое название' ref='editTitle' onKeyPress={this.edit}/>
-                               <i className="fa fa-plus btn" aria-hidden="true"
-                                  onClick={this.edit}>
-                               </i>
-                           </div>)
-                       }
-               })()}
+                   </div>
 
                    <div>
-                       {(() => {
-                           if (this.props.deleteGroup !== undefined) {
-                               return (
-                                   <i className="fa fa-ellipsis-h edit" aria-hidden="true"
-                                      onClick={this.showEdit}>
-                                   </i>
-                               )
-                           }
-                       })()}
-
                        <i className="fa fa-times deleteTask" aria-hidden="true"
                            onClick={this.delete}>
                    </i>

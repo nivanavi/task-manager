@@ -3,9 +3,9 @@
     height: 100vh;
     background-color: #1C1D22;
     overflow: auto;
-    box-shadow:-9px 0px 20px 19px rgba(0,0,0,0.6);
-    -webkit-box-shadow:-9px 0px 20px 19px rgba(0,0,0,0.6);
-    -moz-box-shadow:-9px 0px 20px 19px rgba(0,0,0,0.6);
+    box-shadow:-4px 0px 15px 7px rgba(0,0,0,0.4);
+    -webkit-box-shadow:-4px 0px 15px 7px rgba(0,0,0,0.4);
+    -moz-box-shadow:-4px 0px 15px 7px rgba(0,0,0,0.4);
 }
 
 

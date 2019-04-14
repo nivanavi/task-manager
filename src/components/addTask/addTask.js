@@ -11,7 +11,7 @@ class AddTask extends Component {
         if (check === true) {
             important = true;
         }
-if (event.which === 13 || event.which === undefined) {
+if (event.which === 13) {
     event.preventDefault();
     if (title.value !== "") {
         this.props.all.all.addTaskToGroup({
@@ -34,10 +34,7 @@ if (event.which === 13 || event.which === undefined) {
                     <div id={this.props.groupId + 'addButton'} className='addTask'>
                         <div className='adder'>
                             <div className='title'>
-                                <textarea ref='title' placeholder='задача' onKeyPress={this.taskAdder}/>
-                            <i className="fa fa-plus-circle add" aria-hidden="true"
-                               onClick={this.taskAdder}>
-                            </i>
+                                <input ref='title' placeholder='добавить задачу' onKeyPress={this.taskAdder}/>
                             </div>
                             <div className='checkDiv'>
                                 <i className="fa fa-question-circle check" aria-hidden="true">

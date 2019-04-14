@@ -32,8 +32,8 @@ if (this.props.mainData.draggableElementId.length !== 0) {
             <div>
                 {   this.props.times.times.times.map((times) => {
                     return (
-                        <div id={times.id} className='planGroup' key={times.id} onDragOver={this.dragOver} onDrop={(event) => {this.onDrop(event)}}>
-                            <div className='timeHeader' onDrop={this.stopDrop}>{times.start}</div>
+                        <div id={times.id} className='planGroup' key={times.id} onDragOver={this.dragOver} onDrop={this.onDrop}>
+                            <span className='timeHeader' onDrop={this.stopDrop}>{times.start}</span>
                             {times.tasks.map((task) => {
                                         return (
                                            <OneTask
@@ -45,6 +45,8 @@ if (this.props.mainData.draggableElementId.length !== 0) {
                                                description={task.description}
                                                deletePlan={this.props.times}
                                                important={task.important}
+                                               done={task.done}
+                                               later={task.later}
                                            />
                                         )
                                     })
