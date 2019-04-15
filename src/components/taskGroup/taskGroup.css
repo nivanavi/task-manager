@@ -5,6 +5,16 @@
     border-bottom: 2px solid black;
 }
 
+.miniTrue {
+    display: none;
+}
+
+.countDone {
+    margin-left: 15px;
+    font-size: 15px;
+}
+
+
 .groupName {
     display: inline-block;
     margin-top: 5px;
@@ -24,6 +34,19 @@
 
 .deleteGroup:hover {
     background-color: red;
+    transition: 0.5s;
+}
+
+.mini {
+    padding-left: 7px;
+    padding-top: 5px;
+    width: 20px;
+    height: 20px;
+    float: right;
+}
+
+.mini:hover {
+    background-color: gray;
     transition: 0.5s;
 }
 

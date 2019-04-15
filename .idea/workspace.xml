@@ -3,21 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="57f19050-c976-4495-a035-4b6dd9572c09" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/addGroup/addGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/addGroup/addGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/addTask/addTask.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/addTask/addTask.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/addTask/addTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/addTask/addTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/oneTask/oneTask.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/oneTask/oneTask.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/oneTask/oneTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/oneTask/oneTask.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/planGroup/planGroup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/planGroup/planGroup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/planGroup/planGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/planGroup/planGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/planOnDay/planOnDay.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/planOnDay/planOnDay.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/planOnDay/planOnDay.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/planOnDay/planOnDay.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/taskGroup/taskGroup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/taskGroup/taskGroup.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/taskGroup/taskGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/taskGroup/taskGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tasks/tasks.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tasks/tasks.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tasks/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tasks/tasks.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/allTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/allTasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/dayPlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/dayPlan.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,7 +23,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/planGroup/planGroup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
+            <state relative-caret-position="726">
               <caret line="35" column="78" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -42,20 +32,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/planGroup/planGroup.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+            <state relative-caret-position="44">
+              <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/redux/allTasks.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="28" column="53" lean-forward="true" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+            <state relative-caret-position="356">
+              <caret line="313" column="45" lean-forward="true" selection-start-line="313" selection-start-column="45" selection-end-line="313" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -96,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/taskGroup/taskGroup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="102" column="63" lean-forward="true" selection-start-line="102" selection-start-column="63" selection-end-line="102" selection-end-column="63" />
+            <state relative-caret-position="484">
+              <caret line="99" column="66" selection-start-line="99" selection-start-column="66" selection-end-line="99" selection-end-column="66" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -106,10 +96,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/oneTask/oneTask.js">
+        <entry file="file://$PROJECT_DIR$/src/components/tasks/tasks.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="484">
+              <caret line="101" column="30" selection-start-line="101" selection-start-column="19" selection-end-line="101" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/taskGroup/taskGroup.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
-              <caret line="112" column="14" selection-start-line="112" selection-start-column="14" selection-end-line="112" selection-end-column="14" />
+              <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/oneTask/oneTask.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="140" column="70" selection-start-line="140" selection-start-column="36" selection-end-line="140" selection-end-column="70" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -135,26 +146,26 @@
         <option value="$PROJECT_DIR$/src/redux/mainData.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/hoc/layout.css" />
-        <option value="$PROJECT_DIR$/src/components/tasks/tasks.js" />
-        <option value="$PROJECT_DIR$/src/components/taskGroup/taskGroup.js" />
         <option value="$PROJECT_DIR$/src/components/planOnDay/planOnDay.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/oneTask/oneTask.js" />
         <option value="$PROJECT_DIR$/src/components/addTask/addTask.js" />
         <option value="$PROJECT_DIR$/src/components/addGroup/addGroup.js" />
         <option value="$PROJECT_DIR$/src/components/addTask/addTask.css" />
-        <option value="$PROJECT_DIR$/src/components/taskGroup/taskGroup.css" />
         <option value="$PROJECT_DIR$/src/components/planOnDay/planOnDay.css" />
         <option value="$PROJECT_DIR$/src/components/tasks/tasks.css" />
         <option value="$PROJECT_DIR$/src/components/oneTask/oneTask.css" />
         <option value="$PROJECT_DIR$/src/components/planGroup/planGroup.js" />
-        <option value="$PROJECT_DIR$/src/components/planGroup/planGroup.css" />
         <option value="$PROJECT_DIR$/src/redux/dayPlan.js" />
+        <option value="$PROJECT_DIR$/src/components/tasks/tasks.js" />
         <option value="$PROJECT_DIR$/src/redux/allTasks.js" />
+        <option value="$PROJECT_DIR$/src/components/taskGroup/taskGroup.js" />
+        <option value="$PROJECT_DIR$/src/components/taskGroup/taskGroup.css" />
+        <option value="$PROJECT_DIR$/src/components/planGroup/planGroup.css" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-474" />
     <option name="y" value="-15" />
     <option name="width" value="1940" />
@@ -166,6 +177,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -176,6 +188,11 @@
             <path>
               <item name="react-try" type="b2602c69:ProjectViewProjectNode" />
               <item name="react-try" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-try" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-try" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -183,27 +200,6 @@
               <item name="react-try" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-try" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-try" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="addGroup" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-try" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-try" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="addTask" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-try" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-try" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="oneTask" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="react-try" type="b2602c69:ProjectViewProjectNode" />
@@ -211,13 +207,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="planGroup" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-try" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-try" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="planOnDay" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="react-try" type="b2602c69:ProjectViewProjectNode" />
@@ -243,7 +232,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -306,11 +294,12 @@
       <workItem from="1555079440196" duration="599000" />
       <workItem from="1555136867033" duration="15729000" />
       <workItem from="1555254930012" duration="8973000" />
+      <workItem from="1555312501350" duration="5829000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246682000" />
+    <option name="totallyTimeSpent" value="252511000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -322,7 +311,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -460,13 +450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="42" column="7" lean-forward="true" selection-end-line="42" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/planOnDay/planOnDay.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="488">
@@ -477,30 +460,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/tasks/tasks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="28" column="75" selection-start-line="28" selection-start-column="75" selection-end-line="28" selection-end-column="75" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="554">
           <caret line="57" column="20" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/addGroup/addGroup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -521,16 +484,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/oneTask/oneTask.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="112" column="14" selection-start-line="112" selection-start-column="14" selection-end-line="112" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/planOnDay/planOnDay.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
@@ -545,10 +498,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/taskGroup/taskGroup.css">
+    <entry file="file://$PROJECT_DIR$/src/components/planGroup/planGroup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="31" column="14" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
+        <state relative-caret-position="726">
+          <caret line="35" column="78" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/dayPlan.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3476">
+          <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/addGroup/addGroup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="28" column="8" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/oneTask/oneTask.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="140" column="70" selection-start-line="140" selection-start-column="36" selection-end-line="140" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -562,44 +552,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/taskGroup/taskGroup.js">
+    <entry file="file://$PROJECT_DIR$/src/components/tasks/tasks.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="102" column="63" lean-forward="true" selection-start-line="102" selection-start-column="63" selection-end-line="102" selection-end-column="63" />
+        <state relative-caret-position="484">
+          <caret line="101" column="30" selection-start-line="101" selection-start-column="19" selection-end-line="101" selection-end-column="30" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/planGroup/planGroup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="35" column="78" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/planGroup/planGroup.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/dayPlan.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3476">
-          <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/allTasks.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="28" column="53" lean-forward="true" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+        <state relative-caret-position="356">
+          <caret line="313" column="45" lean-forward="true" selection-start-line="313" selection-start-column="45" selection-end-line="313" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/taskGroup/taskGroup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="99" column="66" selection-start-line="99" selection-start-column="66" selection-end-line="99" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/taskGroup/taskGroup.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/planGroup/planGroup.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
         </state>
       </provider>
     </entry>

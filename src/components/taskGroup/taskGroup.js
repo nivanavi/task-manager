@@ -60,6 +60,10 @@ class TaskGroup extends Component {
         }
     };
 
+    minifyGroup = (id) => {
+        this.props.all.minifyGroup(id)
+    };
+
     render() {
         return (
             <div>
@@ -71,6 +75,21 @@ class TaskGroup extends Component {
                 </div>
             {   this.props.groups.groups.map((groups) => {
                 const dropNumGroup = this.props.groups.groups.indexOf(groups);
+                let countDone = 0;
+                groups.tasks.map((task) => {
+                    if (task.done !== true) {
+                        countDone++
+                    }
+                    return null;
+                });
+                let classForMini = [];
+                let classForMinibtn = ['fa mini'];
+                if (groups.mini === true) {
+                    classForMinibtn.push('fa-expand');
+                    classForMini.push('miniTrue')
+                } else {
+                    classForMinibtn.push('fa-minus');
+                }
                     return (
                         <div key={groups.id}>
                         <div className='group' id={groups.id} draggable='true' onDragStart={this.dragStartGroup}>
@@ -78,11 +97,16 @@ class TaskGroup extends Component {
                                 <div>
                                     <div onDrop={this.stopDrop}>
                                         <span className='groupName'>{groups.groupName}</span>
+                                        <span className='countDone'>осталось: {countDone} из {groups.tasks.length}</span>
                                         <i className="fa fa-times deleteGroup" aria-hidden="true"
                                            onClick={() => {this.deleteGroup(groups.id)}}>
                                         </i>
+                                        <i className={classForMinibtn.join(" ")} aria-hidden="true"
+                                           onClick={() => {this.minifyGroup(groups.id)}}>
+                                        </i>
                                     </div>
                                 </div>
+                                <div className={classForMini.join(" ")}>
                                 <div id='0' className='dropDiv'
                                      onDragOver={this.dragOver}
                                      onDrop={(event) => {this.onDrop(event, groups.id)}}>
@@ -110,8 +134,9 @@ class TaskGroup extends Component {
                                         </div>
                                     )
                                 })}
-                            </div>
                             <AddTask all={this.props} groupId={groups.id}/>
+                            </div>
+                            </div>
                         </div>
                             <div id={dropNumGroup + 1} className='dropGroup'
                                  onDragOver={this.dragOver}

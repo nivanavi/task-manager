@@ -97,6 +97,10 @@ function mapDispatchToProps(dispatch) {
         sortGroup: (task) => dispatch({
             type: 'sortGroup',
             payload: task
+        }),
+        minifyGroup: (task) => dispatch({
+            type: 'minifyGroup',
+            payload: task
         })
     }
 }

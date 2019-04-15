@@ -2,6 +2,7 @@ const initionState = {
     groups: [
         {groupName: 'районный центр',
             id: '1337',
+            mini: false,
             tasks: [
                 {title: 'сделать', description: 'сделать работу', id: '14545', important: false, done: true, later: false, inPlan: false},
                 {title: 'выучить', description: 'выучить рефкт', id: '25454', important: false, done: false, later: true, inPlan: false},
@@ -9,6 +10,7 @@ const initionState = {
         },
         {groupName: 'дом',
             id: '1488',
+            mini: false,
             tasks: [
                 {title: 'прогулка', description: 'пойти гулять', id: '445423', important: false, done: false, later: false, inPlan: false},
                 {title: 'сон', description: 'пойти спать', id: '5452435', important: false, done: false, later: false, inPlan: false},
@@ -298,6 +300,19 @@ export default function allTasks(state = initionState, action) {
                    allGroups.splice(allGroups.indexOf(group), 1);
                    allGroups.splice(action.payload.placeId, 0, group);
                }
+                return null;
+            });
+            return {
+                groups: allGroups,
+                filterDone: state.filterDone,
+                filterLater: state.filterLater
+            };
+
+        case 'minifyGroup':
+            allGroups.find((group) => {
+                if (group.id === action.payload) {
+                    group.mini = !group.mini;
+                }
                 return null;
             });
             return {
