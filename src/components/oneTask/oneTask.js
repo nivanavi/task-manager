@@ -120,12 +120,6 @@ class OneTask extends Component {
             classForTask.push('inPlan')
         }
 
-        if (this.props.deletePlan !== undefined) {
-            classForTask.push('taskPlanMargin')
-        }
-
-
-
         let classForLaterDoneTask = [];
             classForTask.push('visible');
             if (this.props.done === true) {

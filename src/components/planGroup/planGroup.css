@@ -1,7 +1,6 @@
 .planGroup {
     background-color: #2B2B2B;
     border-bottom: 2px solid black;
-    min-height: 50px;
 }
 
 .timeHeader {
@@ -11,4 +10,8 @@
     font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+.sortInPlan {
+    height: 10px;
 }

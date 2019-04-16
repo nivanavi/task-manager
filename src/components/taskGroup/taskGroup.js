@@ -60,6 +60,22 @@ class TaskGroup extends Component {
         }
     };
 
+    onDragEnterTask = (event) => {
+        let data = this.props.mainData.draggableElementId;
+        if (data[0] !== undefined) {
+            event.target.classList.remove('enterRemove');
+            event.target.classList.add('enter')
+        }
+    };
+
+    onDragLeaveTask = (event) => {
+        let data = this.props.mainData.draggableElementId;
+        if (data[0] !== undefined) {
+            event.target.classList.remove('enter');
+            event.target.classList.add('enterRemove')
+        }
+    };
+
     minifyGroup = (id) => {
         this.props.all.minifyGroup(id)
     };
@@ -109,7 +125,9 @@ class TaskGroup extends Component {
                                 <div className={classForMini.join(" ")}>
                                 <div id='0' className='dropDiv'
                                      onDragOver={this.dragOver}
-                                     onDrop={(event) => {this.onDrop(event, groups.id)}}>
+                                     onDrop={(event) => {this.onDrop(event, groups.id)}}
+                                     onDragEnter={this.onDragEnterTask}
+                                     onDragLeave={this.onDragLeaveTask}>
                                 </div>
                                 { groups.tasks.map((tasks) => {
                                     const dropNumber = (groups.tasks.indexOf(tasks));
@@ -129,7 +147,9 @@ class TaskGroup extends Component {
                                         />
                                             <div id={dropNumber + 1} className='dropDiv'
                                                  onDragOver={this.dragOver}
-                                                 onDrop={(event) => {this.onDrop(event, groups.id)}}>
+                                                 onDrop={(event) => {this.onDrop(event, groups.id)}}
+                                                 onDragEnter={this.onDragEnterTask}
+                                                 onDragLeave={this.onDragLeaveTask}>
                                             </div>
                                         </div>
                                     )

@@ -79,10 +79,6 @@
     display: inline-block;
 }
 
-.taskPlanMargin {
-    margin-bottom: 10px;
-}
-
 .inPlan {
     border-top: 2px solid yellow;
 }

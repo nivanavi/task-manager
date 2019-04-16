@@ -27,7 +27,7 @@ export default function dayPlan(state = initionState, action) {
                 if (action.payload.mainData[4] !== undefined) {
                 allGroups.find((groups) => {
                     if (groups.id === action.payload.mainData[4]) {
-                        groups.tasks.find((task) => {
+                        groups.tasks.map((task) => {
                             if (task.id === action.payload.mainData[0]) {
                                 groups.tasks.splice(groups.tasks.indexOf(task), 1)
                             }
@@ -41,7 +41,7 @@ export default function dayPlan(state = initionState, action) {
 
                 if (action.payload.mainData[3] !== undefined) {
                     allGroups.map((groups) => {
-                            groups.tasks.find((task) => {
+                            groups.tasks.map((task) => {
                                 if (task.id === action.payload.mainData[0]) {
                                     groups.tasks.map((task) => {
                                         if (task.id === action.payload.mainData[0]) {
@@ -56,10 +56,10 @@ export default function dayPlan(state = initionState, action) {
                     });
                 }
 
-                if (allGroupId.indexOf(action.payload.eventId) !== -1) {
-                        allGroups.find((group) => {
-                            if (action.payload.eventId === group.id) {
-                                group.tasks.push({
+                if (allGroupId.indexOf(action.payload.groupId) !== -1) {
+                        allGroups.map((group) => {
+                            if (group.id === action.payload.groupId) {
+                                group.tasks.splice(action.payload.eventId, 0, {
                                     title: action.payload.mainData[1],
                                     description: action.payload.mainData[2],
                                     id: action.payload.mainData[0],
