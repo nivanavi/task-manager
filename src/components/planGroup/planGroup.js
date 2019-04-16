@@ -62,8 +62,20 @@ if (this.props.mainData.draggableElementId.length !== 0) {
                             </div>
                             {times.tasks.map((task) => {
                                 let count = times.tasks.indexOf(task);
+                                let classForHiddenTask = [];
+                                if (this.props.mainData.filterDone === false) {
+                                    if (task.done === true) {
+                                        classForHiddenTask.push('hideFilterTask')
+                                    }
+                                }
+
+                                if (this.props.mainData.filterLater === false) {
+                                    if (task.later === true) {
+                                        classForHiddenTask.push('hideFilterTask')
+                                    }
+                                }
                                         return (
-                                            <div key={task.id}>
+                                            <div key={task.id} className={classForHiddenTask.join(" ")}>
                                            <OneTask
                                                idPlanGroup={times.id}
                                                dragId={this.props.mainData}

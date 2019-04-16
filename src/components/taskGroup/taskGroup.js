@@ -122,7 +122,7 @@ class TaskGroup extends Component {
                                         </i>
                                     </div>
                                 </div>
-                                <div className={classForMini.join(" ")}>
+                                <div  >
                                 <div id='0' className='dropDiv'
                                      onDragOver={this.dragOver}
                                      onDrop={(event) => {this.onDrop(event, groups.id)}}
@@ -131,8 +131,20 @@ class TaskGroup extends Component {
                                 </div>
                                 { groups.tasks.map((tasks) => {
                                     const dropNumber = (groups.tasks.indexOf(tasks));
+                                    let classForHiddenTask = [];
+                                    if (this.props.mainData.filterDone === false) {
+                                        if (tasks.done === true) {
+                                            classForHiddenTask.push('hideFilterTask')
+                                        }
+                                    }
+
+                                    if (this.props.mainData.filterLater === false) {
+                                        if (tasks.later === true) {
+                                            classForHiddenTask.push('hideFilterTask')
+                                        }
+                                    }
                                     return (
-                                        <div key={tasks.id}>
+                                        <div key={tasks.id} className={classForHiddenTask.join(" ")}>
                                         <OneTask
                                             groupId={groups.id}
                                             dragId={this.props.mainData}

@@ -120,13 +120,12 @@ class OneTask extends Component {
             classForTask.push('inPlan')
         }
 
+
         let classForLaterDoneTask = [];
-            classForTask.push('visible');
             if (this.props.done === true) {
                 classForTask.push('doneTrue')
             }
 
-            classForTask.push('visible');
             if (this.props.later === true) {
                 classForTask.push('laterTrue')
             }

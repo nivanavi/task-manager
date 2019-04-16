@@ -4,8 +4,8 @@ const initionState = {
             id: '1337',
             mini: false,
             tasks: [
-                {title: 'сделать', description: 'сделать работу', id: '14545', important: false, done: true, later: false, inPlan: false},
-                {title: 'выучить', description: 'выучить рефкт', id: '25454', important: false, done: false, later: true, inPlan: false},
+                {title: 'сделать', description: 'сделать работу', id: '14545', important: false, done: false, later: false, inPlan: false},
+                {title: 'выучить', description: 'выучить рефкт', id: '25454', important: false, done: false, later: false, inPlan: false},
                 {title: 'переделать', description: 'переделать сайт', id: '345445', important: false, done: false, later: false, inPlan: false}]
         },
         {groupName: 'дом',
@@ -16,9 +16,7 @@ const initionState = {
                 {title: 'сон', description: 'пойти спать', id: '5452435', important: false, done: false, later: false, inPlan: false},
                 {title: 'еда', description: 'пойти есть', id: '64545', important: false, done: false, later: false, inPlan: false}]
         }
-    ],
-    filterDone: false,
-    filterLater: false
+    ]
 };
 
 export default function allTasks(state = initionState, action) {
@@ -176,86 +174,6 @@ export default function allTasks(state = initionState, action) {
                 filterDone: state.filterDone,
                 filterLater: state.filterLater
             };
-        case 'showDone':
-            let arrAll = document.getElementsByClassName('oneTask');
-            let arrDivDrop = document.getElementsByClassName('dropDiv');
-            if (state.filterDone === false) {
-                let arrDone = document.getElementsByClassName('doneTrue');
-                document.getElementById('later').style.visibility = 'hidden';
-
-                for (let i = 0; i < arrAll.length; i++) {
-                    arrAll[i].style.display = 'none';
-                }
-
-                for (let i = 0; i < arrDivDrop.length; i++) {
-                    arrDivDrop[i].style.display = 'none';
-                }
-
-                for (let i = 0; i < arrDone.length; i++) {
-                    arrDone[i].style.display = 'block';
-                }
-
-                return {
-                    groups: allGroups,
-                    filterDone: true,
-                    filterLater: state.filterLater
-                };
-            } else {
-                document.getElementById('later').style.visibility = 'visible';
-                for (let i = 0; i < arrAll.length; i++) {
-                    arrAll[i].style.display = 'block';
-                }
-
-                for (let i = 0; i < arrDivDrop.length; i++) {
-                    arrDivDrop[i].style.display = 'block';
-                }
-
-                return {
-                    groups: allGroups,
-                    filterDone: false,
-                    filterLater: state.filterLater
-                };
-            }
-
-        case 'showLater':
-            let arrAllLater = document.getElementsByClassName('oneTask');
-            let arrDivDropL = document.getElementsByClassName('dropDiv');
-            if (state.filterLater === false) {
-                document.getElementById('done').style.visibility = 'hidden';
-                let arrLater = document.getElementsByClassName('laterTrue');
-
-                for (let i = 0; i < arrAllLater.length; i++) {
-                    arrAllLater[i].style.display = 'none';
-                }
-
-                for (let i = 0; i < arrDivDropL.length; i++) {
-                    arrDivDropL[i].style.display = 'none';
-                }
-
-                for (let i = 0; i < arrLater.length; i++) {
-                    arrLater[i].style.display = 'block';
-                }
-
-                return {
-                    groups: allGroups,
-                    filterDone: state.filterDone,
-                    filterLater: true
-                };
-            } else {
-                document.getElementById('done').style.visibility = 'visible';
-                for (let i = 0; i < arrAllLater.length; i++) {
-                    arrAllLater[i].style.display = 'block';
-                }
-
-                for (let i = 0; i < arrDivDropL.length; i++) {
-                    arrDivDropL[i].style.display = 'block';
-                }
-                return {
-                    groups: allGroups,
-                    filterDone: state.filterDone,
-                    filterLater: false
-                };
-            }
 
         case 'editTitle':
         case 'rootEditTitleGroup':

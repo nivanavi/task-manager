@@ -15,3 +15,7 @@
 .sortInPlan {
     height: 10px;
 }
+
+.hideFilterTask {
+    display: none;
+}

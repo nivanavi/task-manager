@@ -46,7 +46,6 @@
 }
 
 .done {
-    display: none;
     cursor: pointer;
     margin-left: 30px;
 }
@@ -61,7 +60,6 @@
 }
 
 .later {
-    display: none;
     cursor: pointer;
     margin-left: 30px;
 }
@@ -75,7 +73,7 @@
     color: yellow;
 }
 
-.visible i {
+i {
     display: inline-block;
 }
 

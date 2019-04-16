@@ -6,19 +6,17 @@ import {connect} from "react-redux";
 
 
 class Tasks extends Component {
-
     render() {
         let classForDoneBtn = ["fa fa-check-square showDone"];
         let classForLaterBtn = ["fa fa-hourglass-start showLater"];
 
-        if (this.props.filterDone === true) {
+        if (this.props.mainData.filterDone === true) {
             classForDoneBtn.push('showDoneTrue')
         }
 
-        if (this.props.filterLater === true) {
+        if (this.props.mainData.filterLater === true) {
             classForLaterBtn.push('showLaterTrue')
         }
-
         return (
             <div className="tasks">
                 <div className='header'>
