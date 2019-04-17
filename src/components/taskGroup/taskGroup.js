@@ -122,7 +122,7 @@ class TaskGroup extends Component {
                                         </i>
                                     </div>
                                 </div>
-                                <div  >
+                                <div  className={classForMini.join(" ")}>
                                 <div id='0' className='dropDiv'
                                      onDragOver={this.dragOver}
                                      onDrop={(event) => {this.onDrop(event, groups.id)}}
