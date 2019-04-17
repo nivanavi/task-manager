@@ -48,37 +48,45 @@ class OneTask extends Component {
     };
 
     done = () => {
+        const id = this.props.id;
         if (this.props.deletePlan !== undefined) {
             this.props.deletePlan.onDoneInPlan({
-                doneId: this.props.id
+                doneId: id
             });
             this.props.deletePlan.rootEdit.rootDoneGroup({
-                doneId: this.props.id
-            })
+                doneId: id
+            });
+            this.props.deletePlan.onDeleteInPlan({
+                taskDeleteId: id
+            });
         } else {
             this.props.deleteGroup.onDone({
-                doneId: this.props.id
+                doneId: id
             });
             this.props.deleteGroup.rootEdit.rootDonePlan({
-                doneId: this.props.id
+                doneId: id
             })
         }
     };
 
     later = () => {
+        const id = this.props.id;
         if (this.props.deletePlan !== undefined) {
             this.props.deletePlan.onLaterInPlan({
-                laterId: this.props.id
+                laterId: id
             });
             this.props.deletePlan.rootEdit.rootLaterGroup({
-                laterId: this.props.id
-            })
+                laterId: id
+            });
+            this.props.deletePlan.onDeleteInPlan({
+                taskDeleteId: id
+            });
         } else {
             this.props.deleteGroup.onLater({
-                laterId: this.props.id
+                laterId: id
             });
             this.props.deleteGroup.rootEdit.rootLaterPlan({
-                laterId: this.props.id
+                laterId: id
             })
         }
     };
