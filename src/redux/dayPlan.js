@@ -58,7 +58,7 @@ export default function dayPlan(state = initionState, action) {
 
                 if (allGroupId.indexOf(action.payload.groupId) !== -1) {
                         allGroups.map((group) => {
-                            if (group.id === action.payload.groupId) {
+                            if (group.id === action.payload.groupId && action.payload.mainData[6] !== true && action.payload.mainData[7] !== true) {
                                 group.tasks.splice(action.payload.eventId, 0, {
                                     title: action.payload.mainData[1],
                                     description: action.payload.mainData[2],

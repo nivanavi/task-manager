@@ -4,7 +4,6 @@ import './oneTask.css';
 class OneTask extends Component {
 
     dragStart = (event) => {
-        document.getElementById(event.target.id).style.opacity = '1';
         const dragId = this.props.dragId.draggableElementId;
         dragId.splice(0, 9);
         dragId.push(event.target.id,
@@ -18,6 +17,11 @@ class OneTask extends Component {
             this.props.inPlan
             );
         console.log(dragId)
+    };
+
+    dragEnd = () => {
+        const dragId = this.props.dragId.draggableElementId;
+        dragId.splice(0, 9);
     };
 
     stopDrop = (event) => {
@@ -65,7 +69,12 @@ class OneTask extends Component {
             });
             this.props.deleteGroup.rootEdit.rootDonePlan({
                 doneId: id
-            })
+            });
+            this.props.deleteGroup.rootEdit.rootDeleteInPlan(
+                {
+                    taskDeleteId: id
+                }
+            )
         }
     };
 
@@ -87,7 +96,12 @@ class OneTask extends Component {
             });
             this.props.deleteGroup.rootEdit.rootLaterPlan({
                 laterId: id
-            })
+            });
+            this.props.deleteGroup.rootEdit.rootDeleteInPlan(
+                {
+                    taskDeleteId: id
+                }
+            )
         }
     };
 
@@ -139,7 +153,7 @@ class OneTask extends Component {
             }
 
         return (
-            <div id={this.props.id} className={classForTask.join(" ")} draggable='true' onDragStart={this.dragStart} onDrop={this.stopDrop}>
+            <div id={this.props.id} className={classForTask.join(" ")} draggable='true' onDragEnd={this.dragEnd} onDragStart={this.dragStart} onDrop={this.stopDrop}>
                <div className='oneTaskHeader'>
                    <div className={classForLaterDoneTask.join(" ")}>
                        <input onChange={this.edit} ref='title' value={this.props.title}  id={this.props.id + 'title'}/>

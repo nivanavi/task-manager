@@ -147,6 +147,7 @@ export default function allTasks(state = initionState, action) {
                 group.tasks.find((needTask) => {
                     if (needTask.id === action.payload.doneId) {
                         needTask.done = !needTask.done;
+                        needTask.inPlan = false;
                             }
                             return null;
                 });
@@ -164,6 +165,7 @@ export default function allTasks(state = initionState, action) {
                 group.tasks.find((needTask) => {
                     if (needTask.id === action.payload.laterId) {
                         needTask.later = !needTask.later;
+                        needTask.inPlan = false;
                     }
                     return null;
                 });
