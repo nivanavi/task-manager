@@ -157,6 +157,12 @@ export default function dayPlan(state = initionState, action) {
                 times: allGroups
             };
 
+        case 'getTasksInPlan':
+            console.log(action.payload.all);
+            return {
+                times: action.payload.all
+            };
+
         default:
             return state
     }

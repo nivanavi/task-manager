@@ -1,22 +1,5 @@
 const initionState = {
-    groups: [
-        {groupName: 'районный центр',
-            id: '1337',
-            mini: false,
-            tasks: [
-                {title: 'сделать', description: 'сделать работу', id: '14545', important: false, done: false, later: false, inPlan: false},
-                {title: 'выучить', description: 'выучить рефкт', id: '25454', important: false, done: false, later: false, inPlan: false},
-                {title: 'переделать', description: 'переделать сайт', id: '345445', important: false, done: false, later: false, inPlan: false}]
-        },
-        {groupName: 'дом',
-            id: '1488',
-            mini: false,
-            tasks: [
-                {title: 'прогулка', description: 'пойти гулять', id: '445423', important: false, done: false, later: false, inPlan: false},
-                {title: 'сон', description: 'пойти спать', id: '5452435', important: false, done: false, later: false, inPlan: false},
-                {title: 'еда', description: 'пойти есть', id: '64545', important: false, done: false, later: false, inPlan: false}]
-        }
-    ]
+    groups: []
 };
 
 export default function allTasks(state = initionState, action) {
@@ -28,10 +11,21 @@ export default function allTasks(state = initionState, action) {
                 if (group.id === action.payload.groupId) {
                     let allTasks = [...group.tasks, {
                         title: action.payload.title,
-                        description: '',
                         id: idTask,
-                        important: action.payload.important
+                        important: action.payload.important,
+                        done: false,
+                        later: false,
+                        inPlan: false
+
                     }];
+                        fetch(`/groups/addTaskToGroup/${action.payload.groupId}`, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json, text/plain, */*',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(allTasks)
+                        });
                     group.tasks = allTasks;
                 }
                 return null;
@@ -47,8 +41,22 @@ export default function allTasks(state = initionState, action) {
             allGroups.push({
                 groupName: action.payload.title,
                 id: idGroup,
+                mini: false,
                 tasks: []
             });
+            fetch('/groups', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            groupName: action.payload.title,
+                            id: idGroup,
+                            mini: false,
+                            tasks: []
+                        })
+                    });
             return {
                 groups: allGroups,
                 filterDone: state.filterDone,
@@ -60,6 +68,9 @@ export default function allTasks(state = initionState, action) {
                 if (group.id === action.payload) {
                     allGroups.splice(allGroups.indexOf(group), 1)
                 }
+                fetch(`/groups/${action.payload}`, {
+                            method: 'DELETE'
+                        });
                 return null;
             });
             return {
@@ -89,7 +100,15 @@ export default function allTasks(state = initionState, action) {
                     if (group.id === action.payload.mainData[3]) {
                         group.tasks.map((task) => {
                             if (task.id === action.payload.mainData[0]) {
-                                group.tasks.splice(group.tasks.indexOf(task), 1)
+                                group.tasks.splice(group.tasks.indexOf(task), 1);
+                                fetch(`/groups/sortTask/${action.payload.mainData[3]}`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Accept': 'application/json, text/plain, */*',
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(group.tasks)
+                                });
                             }
                             return null;
                         })
@@ -112,6 +131,14 @@ export default function allTasks(state = initionState, action) {
                                 inPlan: action.payload.mainData[8]
                                 }
                                 );
+                            fetch(`/groups/sortTask/${group.id}`, {
+                                method: 'POST',
+                                headers: {
+                                    'Accept': 'application/json, text/plain, */*',
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(allTasks)
+                            });
                             group.tasks = allTasks
                         }
                         return null;
@@ -129,6 +156,14 @@ export default function allTasks(state = initionState, action) {
                         if (needTask.id === action.payload.taskDeleteId) {
                             let allTasks = [...group.tasks];
                             allTasks.splice(group.tasks.indexOf(needTask), 1);
+                            fetch(`/groups/deleteTask/${group.id}`, {
+                                method: 'POST',
+                                headers: {
+                                    'Accept': 'application/json, text/plain, */*',
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(allTasks)
+                            });
                             group.tasks = allTasks;
                         }
                         return null;
@@ -232,6 +267,9 @@ export default function allTasks(state = initionState, action) {
             allGroups.find((group) => {
                 if (group.id === action.payload) {
                     group.mini = !group.mini;
+                    fetch(`/groups/groupMini/${[action.payload, group.mini]}`, {
+                        method: 'POST'
+                    });
                 }
                 return null;
             });
@@ -240,6 +278,13 @@ export default function allTasks(state = initionState, action) {
                 filterDone: state.filterDone,
                 filterLater: state.filterLater
             };
+
+        case 'getGroups':
+            return {
+                groups: action.payload.all
+            };
+
+
 
         default:
             return state

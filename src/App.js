@@ -7,7 +7,13 @@ import {connect} from "react-redux";
 
 class App extends Component {
 
-  render() {
+    componentDidMount() {
+        fetch('/groups')
+            .then(res => res.json())
+            .then(groups => this.props.getGroups({all: groups}));
+    }
+
+    render() {
     return (
       <div className="App">
         <Main>
@@ -27,6 +33,14 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        getGroups: (tasks) => dispatch({
+            type: 'getGroups',
+            payload: tasks
+        }),
+        getTasksInPlan: (tasks) => dispatch({
+            type: 'getTasksInPlan',
+            payload: tasks
+        }),
         editTitleInPlan: (task) => dispatch({
             type: 'editTitleInPlan',
             payload: task
