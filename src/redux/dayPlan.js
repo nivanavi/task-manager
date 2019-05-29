@@ -1,15 +1,5 @@
 const initionState = {
-    times: [
-        {start: '6:00', id: '6', tasks: []},
-        {start: '8:00', id: '8', tasks: []},
-        {start: '10:00', id: '10', tasks: []},
-        {start: '12:00', id: '12', tasks: []},
-        {start: '14:00', id: '14', tasks: []},
-        {start: '16:00', id: '16', tasks: []},
-        {start: '18:00', id: '18', tasks: []},
-        {start: '20:00', id: '20', tasks: []},
-        {start: '22:00', id: '22', tasks: []},
-    ]
+    times: []
 };
 
 
@@ -29,7 +19,20 @@ export default function dayPlan(state = initionState, action) {
                     if (groups.id === action.payload.mainData[4]) {
                         groups.tasks.map((task) => {
                             if (task.id === action.payload.mainData[0]) {
-                                groups.tasks.splice(groups.tasks.indexOf(task), 1)
+                                groups.tasks.splice(groups.tasks.indexOf(task), 1);
+                                fetch(`/planOnDay/dropTask/${groups.id}`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Accept': 'application/json, text/plain, */*',
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(groups.tasks)
+                                })
+                                    .catch((err) => {
+                                        if (err) {
+                                            console.log(err)
+                                        }
+                                    });
                             }
                             return null;
                         })
@@ -45,7 +48,20 @@ export default function dayPlan(state = initionState, action) {
                                 if (task.id === action.payload.mainData[0]) {
                                     groups.tasks.map((task) => {
                                         if (task.id === action.payload.mainData[0]) {
-                                            groups.tasks.splice(groups.tasks.indexOf(task), 1)
+                                            groups.tasks.splice(groups.tasks.indexOf(task), 1);
+                                            fetch(`/planOnDay/dropTask/${groups.id}`, {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Accept': 'application/json, text/plain, */*',
+                                                    'Content-Type': 'application/json'
+                                                },
+                                                body: JSON.stringify(groups.tasks)
+                                            })
+                                                .catch((err) => {
+                                                    if (err) {
+                                                        console.log(err)
+                                                    }
+                                                });
                                         }
                                         return null;
                                     })
@@ -66,7 +82,20 @@ export default function dayPlan(state = initionState, action) {
                                     important: action.payload.mainData[5],
                                     done: action.payload.mainData[6],
                                     later: action.payload.mainData[7]
+                                });
+                                fetch(`/planOnDay/dropTask/${group.id}`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Accept': 'application/json, text/plain, */*',
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(group.tasks)
                                 })
+                                    .catch((err) => {
+                                        if (err) {
+                                            console.log(err)
+                                        }
+                                    });
                             }
                             return null;
                         })
@@ -82,6 +111,19 @@ export default function dayPlan(state = initionState, action) {
                         let allTasks = [...group.tasks];
                         allTasks.splice(group.tasks.indexOf(task), 1);
                         group.tasks = allTasks;
+                        fetch(`/planOnDay/dropTask/${group.id}`, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json, text/plain, */*',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(allTasks)
+                        })
+                            .catch((err) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                            });
                     }
                     return null;
                 });
@@ -107,12 +149,52 @@ export default function dayPlan(state = initionState, action) {
                 times: allGroups
             };
 
+        case 'serverEditTitleInPlan':
+            allGroups.map((group) => {
+                let allTasks = [...group.tasks];
+                allTasks.find((task) => {
+                    if (task.id === action.payload.editId) {
+                        fetch(`/planOnDay/dropTask/${group.id}`, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json, text/plain, */*',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(group.tasks)
+                        })
+                            .catch((err) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                            });
+                    }
+                    return null;
+                });
+                return null;
+            });
+            return {
+                times: allGroups
+            };
+
         case 'rootDeleteInPlan':
             allGroups.map((group) => {
                 let allTasks = [...group.tasks];
                 allTasks.find((task) => {
                     if (task.id === action.payload.taskDeleteId) {
-                        allTasks.splice(allTasks.indexOf(task), 1)
+                        allTasks.splice(allTasks.indexOf(task), 1);
+                        fetch(`/planOnDay/dropTask/${group.id}`, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json, text/plain, */*',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(allTasks)
+                        })
+                            .catch((err) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                            });
                     }
                     group.tasks = allTasks;
                     return null;
@@ -130,6 +212,19 @@ export default function dayPlan(state = initionState, action) {
                 allTasks.find((task) => {
                     if (task.id === action.payload.doneId) {
                         task.done = !task.done;
+                        fetch(`/planOnDay/dropTask/${group.id}`, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json, text/plain, */*',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(allTasks)
+                        })
+                            .catch((err) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                            });
                     }
                     group.tasks = allTasks;
                     return null;
@@ -147,6 +242,19 @@ export default function dayPlan(state = initionState, action) {
                 allTasks.find((task) => {
                     if (task.id === action.payload.laterId) {
                         task.later = !task.later;
+                        fetch(`/planOnDay/dropTask/${group.id}`, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json, text/plain, */*',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(allTasks)
+                        })
+                            .catch((err) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                            });
                     }
                     group.tasks = allTasks;
                     return null;
@@ -157,10 +265,9 @@ export default function dayPlan(state = initionState, action) {
                 times: allGroups
             };
 
-        case 'getTasksInPlan':
-            console.log(action.payload.all);
+        case 'getPlanGroup':
             return {
-                times: action.payload.all
+                times: [...action.payload.all]
             };
 
         default:

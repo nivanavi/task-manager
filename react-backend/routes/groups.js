@@ -31,6 +31,14 @@ router.post('/deleteTask/:id', (req, res) => {
     db.addTaskToGroup(req.params.id, req.body).then(data => res.send(data))
 });
 
+router.post('/doneOrLater/:id', (req, res) => {
+    db.addTaskToGroup(req.params.id, req.body).then(data => res.send(data))
+});
+
+router.post('/editTitle/:id', (req, res) => {
+    db.addTaskToGroup(req.params.id, req.body).then(data => res.send(data))
+});
+
 router.post('/sortTask/:id', (req, res) => {
     db.addTaskToGroup(req.params.id, req.body).then(data => res.send(data))
 });

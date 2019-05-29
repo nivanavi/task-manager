@@ -10,7 +10,21 @@ class App extends Component {
     componentDidMount() {
         fetch('/groups')
             .then(res => res.json())
-            .then(groups => this.props.getGroups({all: groups}));
+            .then(groups => this.props.getGroups({all: groups}))
+            .catch((err) => {
+                if (err) {
+                   console.log(err)
+                }
+            });
+
+        fetch('/planOnDay')
+            .then(res => res.json())
+            .then(planGroup => this.props.getPlanGroup({all: planGroup}))
+            .catch((err) => {
+                if (err) {
+                    console.log(err)
+                }
+            })
     }
 
     render() {
@@ -37,8 +51,16 @@ function mapDispatchToProps(dispatch) {
             type: 'getGroups',
             payload: tasks
         }),
-        getTasksInPlan: (tasks) => dispatch({
-            type: 'getTasksInPlan',
+        serverEditTitle: (tasks) => dispatch({
+            type: 'serverEditTitle',
+            payload: tasks
+        }),
+        serverEditTitleInPlan: (tasks) => dispatch({
+            type: 'serverEditTitleInPlan',
+            payload: tasks
+        }),
+        getPlanGroup: (tasks) => dispatch({
+            type: 'getPlanGroup',
             payload: tasks
         }),
         editTitleInPlan: (task) => dispatch({

@@ -25,7 +25,12 @@ export default function allTasks(state = initionState, action) {
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify(allTasks)
-                        });
+                        })
+                            .catch((err) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                            });
                     group.tasks = allTasks;
                 }
                 return null;
@@ -56,21 +61,32 @@ export default function allTasks(state = initionState, action) {
                             mini: false,
                             tasks: []
                         })
-                    });
-            return {
-                groups: allGroups,
-                filterDone: state.filterDone,
-                filterLater: state.filterLater
-            };
+                    })
+                .catch((err) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                });
+
+        return {
+            groups: allGroups,
+            filterDone: state.filterDone,
+            filterLater: state.filterLater
+        };
 
         case 'onDeleteGroup':
             allGroups.map((group) => {
                 if (group.id === action.payload) {
                     allGroups.splice(allGroups.indexOf(group), 1)
-                }
-                fetch(`/groups/${action.payload}`, {
-                            method: 'DELETE'
+                    fetch(`/groups/${action.payload}`, {
+                        method: 'DELETE'
+                    })
+                        .catch((err) => {
+                            if (err) {
+                                console.log(err)
+                            }
                         });
+                }
                 return null;
             });
             return {
@@ -108,7 +124,12 @@ export default function allTasks(state = initionState, action) {
                                         'Content-Type': 'application/json'
                                     },
                                     body: JSON.stringify(group.tasks)
-                                });
+                                })
+                                    .catch((err) => {
+                                        if (err) {
+                                            console.log(err)
+                                        }
+                                    });
                             }
                             return null;
                         })
@@ -138,7 +159,12 @@ export default function allTasks(state = initionState, action) {
                                     'Content-Type': 'application/json'
                                 },
                                 body: JSON.stringify(allTasks)
-                            });
+                            })
+                                .catch((err) => {
+                                    if (err) {
+                                        console.log(err)
+                                    }
+                                });
                             group.tasks = allTasks
                         }
                         return null;
@@ -163,7 +189,12 @@ export default function allTasks(state = initionState, action) {
                                     'Content-Type': 'application/json'
                                 },
                                 body: JSON.stringify(allTasks)
-                            });
+                            })
+                                .catch((err) => {
+                                    if (err) {
+                                        console.log(err)
+                                    }
+                                });
                             group.tasks = allTasks;
                         }
                         return null;
@@ -183,6 +214,19 @@ export default function allTasks(state = initionState, action) {
                     if (needTask.id === action.payload.doneId) {
                         needTask.done = !needTask.done;
                         needTask.inPlan = false;
+                        fetch(`/groups/doneOrLater/${group.id}`, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json, text/plain, */*',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(group.tasks)
+                        })
+                            .catch((err) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                            });
                             }
                             return null;
                 });
@@ -201,6 +245,19 @@ export default function allTasks(state = initionState, action) {
                     if (needTask.id === action.payload.laterId) {
                         needTask.later = !needTask.later;
                         needTask.inPlan = false;
+                        fetch(`/groups/doneOrLater/${group.id}`, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json, text/plain, */*',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(group.tasks)
+                        })
+                            .catch((err) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                            });
                     }
                     return null;
                 });
@@ -231,12 +288,54 @@ export default function allTasks(state = initionState, action) {
                 filterLater: state.filterLater
             };
 
+        case 'serverEditTitle':
+            allGroups.map((group) => {
+                let allTasks = [...group.tasks];
+                allTasks.find((needTask) => {
+                    if (needTask.id === action.payload.editId) {
+                        fetch(`/groups/editTitle/${group.id}`, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json, text/plain, */*',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(group.tasks)
+                        })
+                            .catch((err) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                            });
+                    }
+                    return null;
+                });
+                return null;
+            });
+            return {
+                groups: state.groups,
+                filterDone: state.filterDone,
+                filterLater: state.filterLater
+            };
+
         case 'styleInPlan':
             allGroups.map((group) => {
                 let allTasks = [...group.tasks];
                 allTasks.find((needTask) => {
                     if (needTask.id === action.payload.mainData[0] || needTask.id === action.payload.mainData) {
-                        needTask.inPlan = action.payload.switchValue
+                        needTask.inPlan = action.payload.switchValue;
+                        fetch(`/groups/sortTask/${group.id}`, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json, text/plain, */*',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(allTasks)
+                        })
+                            .catch((err) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                            });
                     }
                     group.tasks = allTasks;
                     return null;
@@ -269,7 +368,12 @@ export default function allTasks(state = initionState, action) {
                     group.mini = !group.mini;
                     fetch(`/groups/groupMini/${[action.payload, group.mini]}`, {
                         method: 'POST'
-                    });
+                    })
+                        .catch((err) => {
+                            if (err) {
+                                console.log(err)
+                            }
+                        });
                 }
                 return null;
             });

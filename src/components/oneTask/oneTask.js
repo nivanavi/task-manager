@@ -132,6 +132,29 @@ class OneTask extends Component {
         }
     };
 
+    serverEdit = () => {
+        if (this.props.deletePlan !== undefined) {
+            this.props.deletePlan.rootEdit.serverEditTitleInPlan({
+                    editId: this.props.id
+                }
+            );
+
+            this.props.deletePlan.rootEdit.serverEditTitle({
+                    editId: this.props.id
+                }
+            )
+        } else {
+            this.props.deleteGroup.rootEdit.serverEditTitle({
+                editId: this.props.id
+            });
+
+            this.props.deleteGroup.rootEdit.serverEditTitleInPlan({
+                    editId: this.props.id
+                }
+            )
+        }
+    };
+
     render() {
         let classForTask = ['oneTask'];
         if (this.props.important === true) {
@@ -156,7 +179,7 @@ class OneTask extends Component {
             <div id={this.props.id} className={classForTask.join(" ")} draggable='true' onDragEnd={this.dragEnd} onDragStart={this.dragStart} onDrop={this.stopDrop}>
                <div className='oneTaskHeader'>
                    <div className={classForLaterDoneTask.join(" ")}>
-                       <input onChange={this.edit} ref='title' value={this.props.title}  id={this.props.id + 'title'}/>
+                       <input onChange={this.edit} onBlur={this.serverEdit} ref='title' value={this.props.title}  id={this.props.id + 'title'}/>
                        <i className='fa fa-check-square done' aria-hidden="true"
                        onClick={this.done}>
                        </i>
