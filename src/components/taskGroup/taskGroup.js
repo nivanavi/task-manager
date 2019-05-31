@@ -22,7 +22,11 @@ class TaskGroup extends Component {
         this.props.mainData.draggableElementId.splice(0, 9);
     };
 
-    deleteGroup = (id) => {
+    deleteGroup = (id, tasks) => {
+        tasks.map((task) => {
+            this.props.all.rootEdit.rootDeleteInPlan({taskDeleteId: task.id});
+            return null;
+        });
         this.props.all.onDeleteGroup(id)
     };
 
@@ -115,7 +119,7 @@ class TaskGroup extends Component {
                                         <span className='groupName'>{groups.groupName}</span>
                                         <span className='countDone'>осталось: {countDone} из {groups.tasks.length}</span>
                                         <i className="fa fa-times deleteGroup" aria-hidden="true"
-                                           onClick={() => {this.deleteGroup(groups.id)}}>
+                                           onClick={() => {this.deleteGroup(groups.id, groups.tasks)}}>
                                         </i>
                                         <i className={classForMinibtn.join(" ")} aria-hidden="true"
                                            onClick={() => {this.minifyGroup(groups.id)}}>
