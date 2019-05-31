@@ -8,15 +8,15 @@ export function getAllPlanGroup() {
     return dayPlan.find();
 }
 
-// export function createDayPlan(data) {
-//     const group = new dayPlan({
-//         start: data.start,
-//         id: data.id,
-//         tasks: data.tasks
-//     });
-//
-//     return group.save();
-// }
+export function createDayPlan(data) {
+    const group = new dayPlan({
+        start: data.start,
+        id: data.id,
+        tasks: data.tasks
+    });
+
+    return group.save();
+}
 
 
 export function dropTask(id, data) {

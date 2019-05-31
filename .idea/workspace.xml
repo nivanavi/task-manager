@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57f19050-c976-4495-a035-4b6dd9572c09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/taskGroup/taskGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/taskGroup/taskGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-backend/routes/planOnDay.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-backend/routes/planOnDay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-backend/utils/dayUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-backend/utils/dayUtils.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -39,14 +40,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/react-backend/routes/planOnDay.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+            <state relative-caret-position="440">
+              <caret line="20" column="6" selection-start-line="20" selection-end-line="20" selection-end-column="6" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
-                <marker date="1559141299661" expanded="true" signature="288:338" ph="..." />
               </folding>
             </state>
           </provider>
@@ -67,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/react-backend/utils/dayUtils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+            <state relative-caret-position="220">
+              <caret line="10" selection-start-line="10" selection-end-line="18" selection-end-column="1" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -94,10 +94,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/taskGroup/taskGroup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
+            <state relative-caret-position="1760">
               <caret line="86" column="14" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="14" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -154,19 +154,19 @@
         <option value="$PROJECT_DIR$/react-backend/models/group.js" />
         <option value="$PROJECT_DIR$/react-backend/utils/dbUtils.js" />
         <option value="$PROJECT_DIR$/react-backend/routes/dayPlan.js" />
-        <option value="$PROJECT_DIR$/react-backend/utils/dayUtils.js" />
         <option value="$PROJECT_DIR$/react-backend/app.js" />
         <option value="$PROJECT_DIR$/react-backend/routes/groups.js" />
-        <option value="$PROJECT_DIR$/react-backend/routes/planOnDay.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/oneTask/oneTask.js" />
         <option value="$PROJECT_DIR$/src/redux/dayPlan.js" />
         <option value="$PROJECT_DIR$/src/redux/allTasks.js" />
         <option value="$PROJECT_DIR$/src/components/taskGroup/taskGroup.js" />
+        <option value="$PROJECT_DIR$/react-backend/utils/dayUtils.js" />
+        <option value="$PROJECT_DIR$/react-backend/routes/planOnDay.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1179" />
@@ -327,12 +327,12 @@
       <workItem from="1558861368752" duration="8604000" />
       <workItem from="1558946103668" duration="599000" />
       <workItem from="1559128775875" duration="12028000" />
-      <workItem from="1559292723824" duration="2643000" />
+      <workItem from="1559292723824" duration="4206000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="373277000" />
+    <option name="totallyTimeSpent" value="374840000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -347,7 +347,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17175975" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17175975" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -361,7 +361,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50052685" side_tool="true" weight="0.32719395" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49947312" visible="true" weight="0.20801733" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49947312" visible="true" weight="0.20801733" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -638,37 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/react-backend/utils/dayUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-backend/routes/groups.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="39" lean-forward="true" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/react-backend/routes/planOnDay.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-            <marker date="1559141299661" expanded="true" signature="288:338" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/react-backend/utils/dbUtils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="639">
@@ -699,10 +668,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/allTasks.js">
+    <entry file="file://$PROJECT_DIR$/react-backend/utils/dayUtils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="79" column="65" lean-forward="true" selection-start-line="79" selection-start-column="65" selection-end-line="79" selection-end-column="65" />
+          <caret line="10" selection-start-line="10" selection-end-line="18" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -713,12 +685,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/allTasks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="79" column="65" lean-forward="true" selection-start-line="79" selection-start-column="65" selection-end-line="79" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/taskGroup/taskGroup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
+        <state relative-caret-position="1760">
           <caret line="86" column="14" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="14" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-backend/routes/groups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="39" lean-forward="true" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/react-backend/routes/planOnDay.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" column="6" selection-start-line="20" selection-end-line="20" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
