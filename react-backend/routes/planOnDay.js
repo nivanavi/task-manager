@@ -71,7 +71,9 @@ db.createDayPlan({
     start: '22:00',
     id: '22',
     tasks: []
-})
+});
+
+res.send("все готово проследуйте на http://localhost:3000")
 });
 
 module.exports = router;
