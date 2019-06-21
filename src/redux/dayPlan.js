@@ -179,7 +179,7 @@ export default function dayPlan(state = initionState, action) {
         case 'rootDeleteInPlan':
             allGroups.map((group) => {
                 let allTasks = [...group.tasks];
-                allTasks.find((task) => {
+                allTasks.map((task) => {
                     if (task.id === action.payload.taskDeleteId) {
                         allTasks.splice(allTasks.indexOf(task), 1);
                         fetch(`/planOnDay/dropTask/${group.id}`, {
